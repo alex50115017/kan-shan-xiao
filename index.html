@@ -79,16 +79,32 @@ footer {
   background: #416b52;
   border-radius: 6px;
 }
-撰寫
+
 
 /* 新增的下拉選單 CSS 放這裡 */
 .main-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px;
-} 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    background-color: #294b3a;
+    padding: 16px;
+}
+
+.main-nav > a,
+.main-nav > details > summary {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.main-nav > a:hover,
+.main-nav > details > summary:hover {
+    color: #dce8dc;
+}
   </style>
 </head>
 <body>
