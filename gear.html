@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登山裝備｜看山小</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #f4f6f2;
+      color: #294b3a;
+      line-height: 1.8;
+    }
+
+    header {
+      background: #294b3a;
+      color: white;
+      text-align: center;
+      padding: 38px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin-bottom: 0;
+      color: #dce8dc;
+    }
+
+    nav {
+      background: #416b52;
+      text-align: center;
+      padding: 14px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #d9e9bc;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 65px 20px;
+      background: linear-gradient(
+        135deg, #e6eee3, #f7f9f5
+      );
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      margin: 0 0 15px;
+    }
+
+    .hero p {
+      color: #64796a;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 45px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 26px;
+      margin-bottom: 35px;
+    }
+
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .system-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 18px #00000012;
+      text-decoration: none;
+      color: #294b3a;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .system-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px #00000020;
+    }
+
+    .card-image {
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 65px;
+    }
+
+    .sleep-image {
+      background: #dce8dc;
+    }
+
+    .warm-image {
+      background: #e9e5d8;
+    }
+
+    .cook-image {
+      background: #e2e9df;
+    }
+
+    .card-content {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      font-size: 23px;
+      margin: 0 0 10px;
+    }
+
+    .card-content p {
+      color: #66786a;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .detail-section {
+      background: white;
+      border-radius: 16px;
+      padding: 35px;
+      margin-top: 35px;
+      box-shadow: 0 3px 15px #0000000a;
+      scroll-margin-top: 25px;
+    }
+
+    .detail-section h2 {
+      border-left: 5px solid #649174;
+      padding-left: 15px;
+      margin-top: 0;
+    }
+
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    .equipment-item {
+      background: #f4f6f2;
+      padding: 22px;
+      border-radius: 12px;
+    }
+
+    .equipment-item h3 {
+      margin-top: 0;
+      color: #416b52;
+    }
+
+    .equipment-item p {
+      font-size: 14px;
+      margin-bottom: 0;
+      color: #52665a;
+    }
+
+    .note {
+      margin-top: 25px;
+      padding: 18px 22px;
+      border-left: 4px solid #649174;
+      background: #edf3e9;
+      border-radius: 8px;
+      color: #47624e;
+    }
+
+    footer {
+      background: #294b3a;
+      color: white;
+      text-align: center;
+      padding: 28px 20px;
+      margin-top: 45px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+      .system-grid,
+      .equipment-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h2 {
+        font-size: 26px;
+      }
+
+      .detail-section {
+        padding: 24px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>看山小｜登山裝備</h1>
+    <p>走進山林，看見更遼闊的自己</p>
+  </header>
+
+  <nav>
+    <a href="index.html">返回首頁</a>
+    <a href="index.html#about">關於我們</a>
+    <a href="contact.html">聯絡我們</a>
+  </nav>
+
+  <div class="hero">
+    <h2>登山裝備・三大系統</h2>
+    <p>
+      裝備不只是重量，
+      更是我們在山林裡的安全與舒適。
+    </p>
+  </div>
+
+  <main class="container">
+
+    <h2 class="section-title">探索三大裝備系統</h2>
+
+    <div class="system-grid">
+
+      <a class="system-card" href="#sleep">
+        <div class="card-image sleep-image">⛺</div>
+        <div class="card-content">
+          <h3>睡眠系統</h3>
+          <p>帳篷・睡袋・睡墊</p>
+          <p>讓每一個山林夜晚，都能安心休息。</p>
+        </div>
+      </a>
+
+      <a class="system-card" href="#warm">
+        <div class="card-image warm-image">🧥</div>
+        <div class="card-content">
+          <h3>保暖系統</h3>
+          <p>排汗層・保暖層・防風雨層</p>
+          <p>面對多變的高山氣候，做好準備。</p>
+        </div>
+      </a>
+
+      <a class="system-card" href="#cook">
+        <div class="card-image cook-image">🍲</div>
+        <div class="card-content">
+          <h3>炊煮系統</h3>
+          <p>爐具・鍋具・燃料</p>
+          <p>在山林裡，享受一頓溫暖的餐食。</p>
+        </div>
+      </a>
+
+    </div>
+
+    <section id="sleep" class="detail-section">
+      <h2>01｜睡眠系統</h2>
+
+      <p>
+        登山不只是行走，良好的睡眠品質，
+        也是維持體力與恢復的重要關鍵。
+        睡眠系統主要由帳篷、睡袋與睡墊組成。
+      </p>
+
+      <div class="equipment-grid">
+
+        <div class="equipment-item">
+          <h3>帳篷</h3>
+          <p>
+            提供遮風避雨的空間。
+            選擇時應考慮重量、抗風能力、
+            防水性與內部空間。
+          </p>
+        </div>
+
+        <div class="equipment-item">
+          <h3>睡袋</h3>
+          <p>
+            維持睡眠時的身體溫度。
+            應依照預期環境溫度，
+            選擇合適的舒適溫標。
+          </p>
+        </div>
+
+        <div class="equipment-item">
+          <h3>睡墊</h3>
+          <p>
+            隔絕地面寒氣並提升舒適度。
+            除了重量與厚度，
+            也應注意睡墊的 R 值。
+          </p>
+        </div>
+
+      </div>
+
+      <div class="note">
+        看山小提醒：睡袋與睡墊需要互相搭配，
+        單靠厚睡袋，不一定能抵擋地面的寒冷。
+      </div>
+    </section>
+
+    <section id="warm" class="detail-section">
+      <h2>02｜保暖系統</h2>
+
+      <p>
+        高山氣溫與天氣變化快速。
+        透過分層穿著，能依照行進、
+        休息及營地活動調整體感溫度。
+      </p>
+
+      <div class="equipment-grid">
+
+        <div class="equipment-item">
+          <h3>排汗層</h3>
+          <p>
+            幫助汗水離開皮膚表面，
+            減少衣物潮濕造成的不適與失溫風險。
+          </p>
+        </div>
+
+        <div class="equipment-item">
+          <h3>保暖層</h3>
+          <p>
+            例如刷毛衣、化纖保暖衣或羽絨衣。
+            依照活動量與環境溫度選擇。
+          </p>
+        </div>
+
+        <div class="equipment-item">
+          <h3>防風雨層</h3>
+          <p>
+            阻擋風雨對身體造成的影響。
+            選擇時應注意防水性、
+            防風能力與透氣設計。
+          </p>
+        </div>
+
+      </div>
+
+      <div class="note">
+        看山小提醒：行進時避免穿得過熱，
+        停下休息時則應及時增加保暖衣物。
+      </div>
+    </section>
+
+    <section id="cook" class="detail-section">
+      <h2>03｜炊煮系統</h2>
+
+      <p>
+        在山林中享用熱食，
+        不僅能補充能量，
+        也是登山生活中令人期待的時刻。
+        炊煮系統需要兼顧重量、效率與安全。
+      </p>
+
+      <div class="equipment-grid">
+
+        <div class="equipment-item">
+          <h3>爐具</h3>
+          <p>
+            依照使用環境、炊煮需求與
+            隊伍人數，選擇適合的登山爐具。
+          </p>
+        </div>
+
+        <div class="equipment-item">
+          <h3>鍋具</h3>
+          <p>
+            考慮容量、重量、
+            導熱效率及收納便利性，
+            避免攜帶不必要的裝備。
+          </p>
+        </div>
+
+        <div class="equipment-item">
+          <h3>燃料</h3>
+          <p>
+            依照天數、人數、
+            氣溫與預計煮水量估算燃料，
+            並預留適當備用量。
+          </p>
+        </div>
+
+      </div>
+
+      <div class="note">
+        看山小提醒：避免在密閉帳篷內使用燃燒式爐具，
+        以降低一氧化碳中毒與火災風險。
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 看山小登山團隊</p>
+    <p>走進山林，看見更遼闊的自己</p>
+  </footer>
+
+</body>
+</html>
+撰寫
+撰寫
