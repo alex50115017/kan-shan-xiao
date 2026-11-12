@@ -17,55 +17,59 @@
     body {
       margin: 0;
       font-family: Arial, "Microsoft JhengHei", sans-serif;
-      background: #f5f7f2;
+      background: #f4f6f2;
       color: #294b3a;
       line-height: 1.8;
     }
 
-    /* 網站頂部 */
     header {
       background: #294b3a;
       text-align: center;
-      padding: 20px 15px 10px;
+      padding: 25px 15px 0;
     }
 
     .logo {
       display: block;
       width: 100%;
-      max-width: 850px;
+      max-width: 720px;
       height: auto;
-      margin: 0 auto;
+      margin: auto;
     }
 
-    /* 導覽列 */
     .main-nav {
-      background: #294b3a;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px 24px;
-      padding: 15px;
+      gap: 12px 25px;
+      background: #294b3a;
+      padding: 22px 15px;
       position: relative;
       z-index: 10;
     }
 
-    .main-nav > a,
-    .main-nav > details > summary {
+    .main-nav a,
+    .main-nav summary {
       color: white;
       text-decoration: none;
-      font-size: 16px;
       cursor: pointer;
+      font-size: 16px;
+    }
+
+    .main-nav details {
+      position: relative;
+    }
+
+    .main-nav summary {
       list-style: none;
-      white-space: nowrap;
     }
 
     .main-nav summary::-webkit-details-marker {
       display: none;
     }
 
-    .dropdown {
-      position: relative;
+    .main-nav summary::after {
+      content: " ▾";
     }
 
     .dropdown-menu {
@@ -74,80 +78,80 @@
       left: 50%;
       transform: translateX(-50%);
       background: #294b3a;
-      width: 230px;
-      padding: 12px;
+      min-width: 210px;
+      padding: 15px;
       border-radius: 12px;
-      box-shadow: 0 8px 20px #00000030;
-      z-index: 20;
+      box-shadow: 0 8px 20px #0003;
+      text-align: left;
     }
 
     .dropdown-menu details {
-      border-bottom: 1px solid #ffffff30;
-      padding: 8px 0;
-    }
-
-    .dropdown-menu details:last-child {
-      border-bottom: none;
+      margin-bottom: 12px;
     }
 
     .dropdown-menu summary {
-      color: white;
-      cursor: pointer;
-      padding: 8px;
+      background: #416b52;
+      border-radius: 7px;
+      padding: 8px 12px;
       text-align: center;
-      list-style: none;
     }
 
     .dropdown-menu a {
       display: block;
-      color: white;
-      text-decoration: none;
-      padding: 8px 12px;
-      border-radius: 6px;
+      padding: 7px 12px;
     }
 
     .dropdown-menu a:hover {
       background: #416b52;
+      border-radius: 6px;
     }
 
-    /* 首頁標語 */
     .hero {
       text-align: center;
-      background: #e7efe5;
-      padding: 65px 20px;
+      background: #e9efe7;
+      padding: 85px 20px;
     }
 
     .hero h1 {
-      font-size: clamp(27px, 5vw, 42px);
-      margin: 0 0 15px;
+      font-size: clamp(28px, 5vw, 42px);
+      margin: 0 0 18px;
     }
 
     .hero p {
-      font-size: 17px;
-      margin: 0;
-      color: #526b59;
+      font-size: 18px;
+      color: #4b6052;
     }
 
-    /* 通用內容 */
     section {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 65px 20px;
+      padding: 75px 20px;
     }
 
-    section h2 {
-      font-size: 28px;
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 30px;
       margin-top: 0;
+      margin-bottom: 30px;
     }
 
-    /* 照片輪播 */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+    }
+
     .slideshow {
       position: relative;
       width: 100%;
-      height: 480px;
+      aspect-ratio: 4 / 3;
       overflow: hidden;
-      border-radius: 14px;
+      border-radius: 15px;
       background: #dce8dc;
+      box-shadow: 0 6px 22px #0002;
     }
 
     .slide {
@@ -157,61 +161,65 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      animation: fade 24s infinite;
+      transition: opacity 1s ease;
     }
 
-    .slide:nth-child(1) {
-      animation-delay: 0s;
+    .slide.active {
+      opacity: 1;
     }
 
-    .slide:nth-child(2) {
-      animation-delay: 6s;
+    .slide-counter {
+      position: absolute;
+      right: 15px;
+      bottom: 12px;
+      color: white;
+      background: #0008;
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 13px;
     }
 
-    .slide:nth-child(3) {
-      animation-delay: 12s;
+    .about-text h3 {
+      font-size: 26px;
+      margin-top: 0;
     }
 
-    .slide:nth-child(4) {
-      animation-delay: 18s;
+    .about-text p {
+      color: #526458;
+      font-size: 16px;
+      margin-bottom: 20px;
     }
 
-    @keyframes fade {
-      0% { opacity: 0; }
-      5% { opacity: 1; }
-      25% { opacity: 1; }
-      30% { opacity: 0; }
-      100% { opacity: 0; }
+    .quote {
+      border-left: 4px solid #72947b;
+      padding-left: 18px;
+      font-weight: bold;
+      color: #294b3a !important;
     }
 
-    /* 山林故事 */
-    .story {
-      text-align: center;
-      max-width: 760px;
-      margin: 35px auto 0;
+    .gear-section {
+      background: #e9efe7;
     }
 
-    .story h2 {
-      font-size: 27px;
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
     }
 
-    .story p {
-      color: #526b59;
-      font-size: 17px;
-      line-height: 2.2;
-    }
-
-    /* 資訊區塊 */
-    .info-box {
+    .gear-card {
       background: white;
-      border-radius: 14px;
-      padding: 30px;
-      margin-top: 20px;
+      padding: 26px;
+      border-radius: 12px;
       box-shadow: 0 3px 12px #0000000d;
     }
 
-    .info-box h3 {
+    .gear-card h3 {
       margin-top: 0;
+    }
+
+    .gear-card p {
+      color: #526458;
     }
 
     footer {
@@ -221,58 +229,35 @@
       padding: 30px 20px;
     }
 
-    /* 手機版 */
-    @media (max-width: 600px) {
-      header {
-        padding: 12px 10px;
-      }
-
+    @media (max-width: 768px) {
       .main-nav {
-        gap: 12px 18px;
-        padding: 18px 10px;
+        gap: 10px 18px;
       }
 
-      .main-nav > a,
-      .main-nav > details > summary {
+      .main-nav a,
+      .main-nav summary {
         font-size: 15px;
       }
 
-      .dropdown-menu {
-        width: 220px;
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
       }
 
-      .hero {
-        padding: 50px 20px;
+      .gear-grid {
+        grid-template-columns: 1fr;
       }
 
       section {
-        padding: 45px 18px;
+        padding: 55px 20px;
       }
 
-      .slideshow {
-        height: 260px;
+      .hero {
+        padding: 65px 20px;
       }
 
-      .story p {
-        font-size: 16px;
-      }
-
-      .info-box {
-        padding: 22px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .slide {
-        animation: none;
-      }
-
-      .slide:first-child {
-        opacity: 1;
+      .dropdown-menu {
+        min-width: 190px;
       }
     }
   </style>
@@ -280,41 +265,38 @@
 
 <body>
 
-  <!-- LOGO -->
   <header>
     <img
       class="logo"
       src="kanshanxiao-logo.png"
-      alt="看山小登山團隊 LOGO"
+      alt="看山小登山團隊 Logo"
     >
   </header>
 
-  <!-- 導覽列 -->
   <nav class="main-nav">
-
     <a href="#about">關於我們</a>
 
-    <details class="dropdown">
-      <summary>登山行程 ▾</summary>
+    <details>
+      <summary>登山行程</summary>
 
       <div class="dropdown-menu">
 
         <details>
-          <summary>新手入門 ▾</summary>
+          <summary>新手入門</summary>
           <a href="xiangshan.html">象山</a>
           <a href="qixingshan.html">七星山</a>
           <a href="guanyinshan.html">觀音山</a>
         </details>
 
         <details>
-          <summary>中級訓練 ▾</summary>
+          <summary>中級訓練</summary>
           <a href="tamanshan.html">塔曼山</a>
           <a href="manabangshan.html">馬那邦山</a>
           <a href="baxianshan.html">八仙山</a>
         </details>
 
         <details>
-          <summary>高級挑戰 ▾</summary>
+          <summary>高級挑戰</summary>
           <a href="yushan.html">玉山主峰</a>
           <a href="hehuanmain.html">合歡主峰</a>
           <a href="jiaminghu.html">嘉明湖</a>
@@ -325,92 +307,103 @@
 
     <a href="#gear">登山裝備</a>
     <a href="#contact">聯絡我們</a>
-
   </nav>
 
-  <!-- 首頁標語 -->
   <div class="hero">
-    <h1>走進山林，看見更遼闊的自己</h1>
-    <p>每一次出發，都是與自己重新相遇的旅程。</p>
+    <h1>一起探索台灣的山林</h1>
+    <p>從新手步道到高山挑戰，找到屬於自己的登山旅程。</p>
   </div>
 
-  <!-- 關於我們 -->
   <section id="about">
+    <div class="container">
 
-    <h2>關於我們</h2>
+      <h2>關於我們</h2>
 
-    <p>
-      看山小是一個熱愛台灣山林的登山團隊。
-      我們相信，登山不只是抵達山頂，
-      更是一段探索自然、認識自己與夥伴的旅程。
-    </p>
+      <div class="about-layout">
 
-    <!-- 登山照片輪播 -->
-    <div class="slideshow">
-      <img class="slide" src="yushan.jpg" alt="玉山主峰">
-      <img class="slide" src="hehuanmain.jpg" alt="合歡主峰">
-      <img class="slide" src="jiaminghu.jpg" alt="嘉明湖">
-      <img class="slide" src="qixingshan.jpg" alt="七星山">
+        <div class="slideshow" id="slideshow">
+          <img class="slide active" src="about01.jpg" alt="看山小登山紀錄 1">
+          <img class="slide" src="about02.jpg" alt="看山小登山紀錄 2">
+          <img class="slide" src="about03.jpg" alt="看山小登山紀錄 3">
+          <img class="slide" src="about04.jpg" alt="看山小登山紀錄 4">
+          <img class="slide" src="about05.jpg" alt="看山小登山紀錄 5">
+          <img class="slide" src="about06.jpg" alt="看山小登山紀錄 6">
+          <img class="slide" src="about07.jpg" alt="看山小登山紀錄 7">
+          <img class="slide" src="about08.jpg" alt="看山小登山紀錄 8">
+          <img class="slide" src="about09.jpg" alt="看山小登山紀錄 9">
+          <img class="slide" src="about10.jpg" alt="看山小登山紀錄 10">
+
+          <div class="slide-counter" id="slideCounter">1 / 10</div>
+        </div>
+
+        <div class="about-text">
+          <h3>山，讓我們看見不一樣的世界</h3>
+
+          <p>
+            看山小是一群熱愛台灣山林的登山夥伴。
+            我們相信，登山不只是抵達山頂，
+            更是一段探索自然、認識自己與夥伴的旅程。
+          </p>
+
+          <p>
+            有人問，為什麼總是往山裡跑？
+            明明知道路途遙遠、登頂不容易，
+            卻仍然一次又一次背起背包，踏上山徑。
+          </p>
+
+          <p>
+            或許是因為山林裡沒有城市的喧囂，
+            只有腳步聲、風聲，以及與自己對話的時間。
+          </p>
+
+          <p>
+            我們在山裡遇見日出、雲海與滿天星斗，
+            也在陡峭的山徑中學會堅持，
+            在疲憊時感受到夥伴的陪伴。
+          </p>
+
+          <p class="quote">
+            我們不只是為了登頂而出發，
+            而是為了沿途的風景，以及一起走過的人。
+          </p>
+        </div>
+
+      </div>
     </div>
-
-    <div class="story">
-      <h2>山，讓我們看見不一樣的世界</h2>
-
-      <p>
-        有人問，為什麼總是往山裡跑？
-        明明知道路途遙遠，明明知道登頂不容易，
-        卻仍然一次又一次背起背包，踏上山徑。
-      </p>
-
-      <p>
-        或許是因為山林裡沒有城市的喧囂，
-        只有腳步聲、風聲，以及與自己對話的時間。
-      </p>
-
-      <p>
-        我們在山裡遇見日出、雲海與滿天星斗，
-        也在陡峭的山徑中學會堅持，
-        在疲憊時感受到夥伴的陪伴。
-      </p>
-
-      <p>
-        山頂不是旅程唯一的答案。
-        真正值得珍惜的，
-        是沿途看見的風景，以及一起走過的人。
-      </p>
-    </div>
-
   </section>
 
-  <!-- 登山裝備 -->
-  <section id="gear">
+  <section id="gear" class="gear-section">
+    <div class="container">
 
-    <h2>登山裝備</h2>
+      <h2>登山裝備</h2>
 
-    <div class="info-box">
-      <h3>為每一次登山做好準備</h3>
-      <p>
-        從登山鞋、背包到保暖與防雨裝備，
-        根據路線難度、天氣及行程天數，
-        選擇合適的裝備，讓登山更加安全舒適。
-      </p>
+      <div class="gear-grid">
+
+        <div class="gear-card">
+          <h3>登山鞋</h3>
+          <p>良好的抓地力與舒適度，是安全行走山徑的重要基礎。</p>
+        </div>
+
+        <div class="gear-card">
+          <h3>登山背包</h3>
+          <p>選擇適合行程與身形的背包，讓裝備攜帶更穩定。</p>
+        </div>
+
+        <div class="gear-card">
+          <h3>登山衣物</h3>
+          <p>依照天氣與海拔準備排汗、保暖及防風防雨衣物。</p>
+        </div>
+
+      </div>
     </div>
-
   </section>
 
-  <!-- 聯絡我們 -->
   <section id="contact">
-
-    <h2>聯絡我們</h2>
-
-    <div class="info-box">
-      <p>
-        喜歡登山，也想認識更多熱愛山林的朋友嗎？
-        歡迎持續關注看山小，一起探索台灣的山林。
-      </p>
-      <p>團隊聯絡資訊將陸續公布。</p>
+    <div class="container">
+      <h2>聯絡我們</h2>
+      <p>喜歡山林，也喜歡分享登山的故事。</p>
+      <p>歡迎透過我們的社群平台交流登山經驗。</p>
     </div>
-
   </section>
 
   <footer>
@@ -418,6 +411,27 @@
     <p>走進山林，看見更遼闊的自己</p>
   </footer>
 
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const counter = document.getElementById("slideCounter");
+
+    let currentSlide = 0;
+
+    function showNextSlide() {
+      slides[currentSlide].classList.remove("active");
+
+      currentSlide = (currentSlide + 1) % slides.length;
+
+      slides[currentSlide].classList.add("active");
+
+      counter.textContent =
+        (currentSlide + 1) + " / " + slides.length;
+    }
+
+    setInterval(showNextSlide, 4000);
+  </script>
+
 </body>
 </html>
-
+撰寫
+撰寫
