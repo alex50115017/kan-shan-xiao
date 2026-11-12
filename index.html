@@ -3,217 +3,421 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>看山小｜登山團隊</title>
+  <title>看山小｜走進山林，看見更遼闊的自己</title>
+
   <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f4f6f2; color: #26382b; }
-    header { background: #294b3a; color: white; padding: 10px; text-align: center; }
- nav { background: #1c3529; padding: 15px; text-align: center; display: flex; justify-content: center; align-items: center; gap: 16px; }
-    nav a { color: white; text-decoration: none; margin: 0 12px; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #f5f7f2;
+      color: #294b3a;
+      line-height: 1.8;
+    }
+
+    /* 網站頂部 */
+    header {
+      background: #294b3a;
+      text-align: center;
+      padding: 20px 15px 10px;
+    }
+
+    .logo {
+      display: block;
+      width: 100%;
+      max-width: 850px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* 導覽列 */
+    .main-nav {
+      background: #294b3a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding: 15px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .main-nav > a,
+    .main-nav > details > summary {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    .main-nav summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #294b3a;
+      width: 230px;
+      padding: 12px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px #00000030;
+      z-index: 20;
+    }
+
+    .dropdown-menu details {
+      border-bottom: 1px solid #ffffff30;
+      padding: 8px 0;
+    }
+
+    .dropdown-menu details:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu summary {
+      color: white;
+      cursor: pointer;
+      padding: 8px;
+      text-align: center;
+      list-style: none;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .dropdown-menu a:hover {
+      background: #416b52;
+    }
+
+    /* 首頁標語 */
     .hero {
-  padding: 55px 20px;
-  text-align: center;
-  background: #e7efe5;
-}
-    .hero h2 { font-size: 32px; }
-    section { max-width: 1000px; margin: auto; padding: 45px 20px; }
-    h2 { color: #294b3a; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .card { background: white; padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px #00000012; }
-    footer { background: #294b3a; color: white; text-align: center; padding: 24px; }
+      text-align: center;
+      background: #e7efe5;
+      padding: 65px 20px;
+    }
 
-.main-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 16px;
-}
+    .hero h1 {
+      font-size: clamp(27px, 5vw, 42px);
+      margin: 0 0 15px;
+    }
 
-.main-nav a {
-  margin: 0;
-}
+    .hero p {
+      font-size: 17px;
+      margin: 0;
+      color: #526b59;
+    }
 
-.dropdown {
-  position: relative;
-  color: white;
-}
+    /* 通用內容 */
+    section {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 65px 20px;
+    }
 
-.dropdown summary {
-  cursor: pointer;
-  list-style: none;
-  padding: 8px 12px;
-}
+    section h2 {
+      font-size: 28px;
+      margin-top: 0;
+    }
 
-.dropdown summary::-webkit-details-marker {
-  display: none;
-}
+    /* 照片輪播 */
+    .slideshow {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #dce8dc;
+    }
 
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 190px;
-  background: #294b3a;
-  border-radius: 10px;
-  padding: 10px;
-  z-index: 100;
-  box-shadow: 0 5px 15px #0003;
-}
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: fade 24s infinite;
+    }
 
-.dropdown-menu details {
-  border-bottom: 1px solid #ffffff33;
-}
+    .slide:nth-child(1) {
+      animation-delay: 0s;
+    }
 
-.dropdown-menu details:last-child {
-  border-bottom: none;
-}
+    .slide:nth-child(2) {
+      animation-delay: 6s;
+    }
 
-.dropdown-menu a {
-  display: block;
-  padding: 8px 16px;
-  color: white;
-  text-align: left;
-}
+    .slide:nth-child(3) {
+      animation-delay: 12s;
+    }
 
-.dropdown-menu a:hover,
-.dropdown-menu summary:hover {
-  background: #416b52;
-  border-radius: 6px;
-}
+    .slide:nth-child(4) {
+      animation-delay: 18s;
+    }
 
+    @keyframes fade {
+      0% { opacity: 0; }
+      5% { opacity: 1; }
+      25% { opacity: 1; }
+      30% { opacity: 0; }
+      100% { opacity: 0; }
+    }
 
-/* 新增的下拉選單 CSS 放這裡 */
-.main-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    background-color: #294b3a;
-    padding: 16px;
-}
+    /* 山林故事 */
+    .story {
+      text-align: center;
+      max-width: 760px;
+      margin: 35px auto 0;
+    }
 
-.main-nav > a,
-.main-nav > details > summary {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    list-style: none;
-}
+    .story h2 {
+      font-size: 27px;
+    }
 
-.main-nav > a:hover,
-.main-nav > details > summary:hover {
-    color: #dce8dc;
-}
+    .story p {
+      color: #526b59;
+      font-size: 17px;
+      line-height: 2.2;
+    }
+
+    /* 資訊區塊 */
+    .info-box {
+      background: white;
+      border-radius: 14px;
+      padding: 30px;
+      margin-top: 20px;
+      box-shadow: 0 3px 12px #0000000d;
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+    }
+
+    footer {
+      background: #294b3a;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    /* 手機版 */
+    @media (max-width: 600px) {
+      header {
+        padding: 12px 10px;
+      }
+
+      .main-nav {
+        gap: 12px 18px;
+        padding: 18px 10px;
+      }
+
+      .main-nav > a,
+      .main-nav > details > summary {
+        font-size: 15px;
+      }
+
+      .dropdown-menu {
+        width: 220px;
+      }
+
+      .hero {
+        padding: 50px 20px;
+      }
+
+      section {
+        padding: 45px 18px;
+      }
+
+      .slideshow {
+        height: 260px;
+      }
+
+      .story p {
+        font-size: 16px;
+      }
+
+      .info-box {
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .slide {
+        animation: none;
+      }
+
+      .slide:first-child {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
+
 <body>
- <header>
 
-  <img
+  <!-- LOGO -->
+  <header>
+    <img
+      class="logo"
+      src="kanshanxiao-logo.png"
+      alt="看山小登山團隊 LOGO"
+    >
+  </header>
 
-    src="kanshanxiao-logo.png"
+  <!-- 導覽列 -->
+  <nav class="main-nav">
 
-    alt="看山小登山團隊 LOGO"
+    <a href="#about">關於我們</a>
 
-    style="display:block; width:100%; max-width:850px; height:auto; margin:0 auto;"
+    <details class="dropdown">
+      <summary>登山行程 ▾</summary>
 
-  >
+      <div class="dropdown-menu">
 
- </header>
+        <details>
+          <summary>新手入門 ▾</summary>
+          <a href="xiangshan.html">象山</a>
+          <a href="qixingshan.html">七星山</a>
+          <a href="guanyinshan.html">觀音山</a>
+        </details>
 
+        <details>
+          <summary>中級訓練 ▾</summary>
+          <a href="tamanshan.html">塔曼山</a>
+          <a href="manabangshan.html">馬那邦山</a>
+          <a href="baxianshan.html">八仙山</a>
+        </details>
 
- <nav class="main-nav">
-  <a href="#about">關於我們</a>
+        <details>
+          <summary>高級挑戰 ▾</summary>
+          <a href="yushan.html">玉山主峰</a>
+          <a href="hehuanmain.html">合歡主峰</a>
+          <a href="jiaminghu.html">嘉明湖</a>
+        </details>
 
-  <details class="dropdown">
-    <summary>登山行程 ▾</summary>
-    <div class="dropdown-menu">
+      </div>
+    </details>
 
-      <details>
-        <summary>新手入門 ▾</summary>
-        <a href="xiangshan.html">象山</a>
-        <a href="qixingshan.html">七星山</a>
-        <a href="guanyinshan.html">觀音山</a>
-      </details>
+    <a href="#gear">登山裝備</a>
+    <a href="#contact">聯絡我們</a>
 
-      <details>
-        <summary>中級訓練 ▾</summary>
-        <a href="tamanshan.html">塔曼山</a>
-        <a href="manabangshan.html">馬那邦山</a>
-        <a href="baxianshan.html">八仙山</a>
-      </details>
+  </nav>
 
-      <details>
-        <summary>高級挑戰 ▾</summary>
-        <a href="yushan.html">玉山主峰</a>
-       <a href="hehuanmain.html">合歡主峰</a>
-        <a href="jiaminghu.html">嘉明湖</a>
-      </details>
-
-    </div>
-  </details>
-
-  <a href="#gear">登山裝備</a>
-  <a href="#contact">聯絡我們</a>
-</nav>
+  <!-- 首頁標語 -->
   <div class="hero">
-    <h2>一起探索台灣的山林</h2>
-    <p>從新手步道到高山挑戰，找到屬於自己的登山旅程。</p>
+    <h1>走進山林，看見更遼闊的自己</h1>
+    <p>每一次出發，都是與自己重新相遇的旅程。</p>
   </div>
+
+  <!-- 關於我們 -->
   <section id="about">
+
     <h2>關於我們</h2>
-    <p>看山小是一個熱愛台灣山林的登山團隊。我們相信，每一次登山都是探索自然、認識自己與夥伴的旅程。</p>
+
+    <p>
+      看山小是一個熱愛台灣山林的登山團隊。
+      我們相信，登山不只是抵達山頂，
+      更是一段探索自然、認識自己與夥伴的旅程。
+    </p>
+
+    <!-- 登山照片輪播 -->
+    <div class="slideshow">
+      <img class="slide" src="yushan.jpg" alt="玉山主峰">
+      <img class="slide" src="hehuanmain.jpg" alt="合歡主峰">
+      <img class="slide" src="jiaminghu.jpg" alt="嘉明湖">
+      <img class="slide" src="qixingshan.jpg" alt="七星山">
+    </div>
+
+    <div class="story">
+      <h2>山，讓我們看見不一樣的世界</h2>
+
+      <p>
+        有人問，為什麼總是往山裡跑？
+        明明知道路途遙遠，明明知道登頂不容易，
+        卻仍然一次又一次背起背包，踏上山徑。
+      </p>
+
+      <p>
+        或許是因為山林裡沒有城市的喧囂，
+        只有腳步聲、風聲，以及與自己對話的時間。
+      </p>
+
+      <p>
+        我們在山裡遇見日出、雲海與滿天星斗，
+        也在陡峭的山徑中學會堅持，
+        在疲憊時感受到夥伴的陪伴。
+      </p>
+
+      <p>
+        山頂不是旅程唯一的答案。
+        真正值得珍惜的，
+        是沿途看見的風景，以及一起走過的人。
+      </p>
+    </div>
+
   </section>
- <section id="trips">
-  <h2>登山行程</h2>
-  <p>依照自己的登山經驗，選擇適合的挑戰路線。</p>
 
-  <div class="cards">
-
-    <div class="card">
-      <h3>新手入門</h3>
-      <p>適合剛開始接觸登山的朋友。</p>
-      <p><a href="xiangshan.html">象山</a></p>
-      <p><a href="qixingshan.html">七星山</a></p>
-      <p><a href="guanyinshan.html">觀音山</a></p>
-    </div>
-
-    <div class="card">
-      <h3>中級訓練</h3>
-      <p>提升體能、耐力與山徑行走能力。</p>
-      <p><a href="tamanshan.html">塔曼山</a></p>
-      <p><a href="manabangshan.html">馬那邦山</a></p>
-      <p><a href="baxianshan.html">八仙山</a></p>
-    </div>
-
-    <div class="card">
-      <h3>高級挑戰</h3>
-      <p>探索高山環境，做好行前準備。</p>
-      <p><a href="yushan.html">玉山主峰</a></p>
-      <p><a href="hehuanmain.html">合歡主峰</a></p>
-      <p><a href="jiaminghu.html">嘉明湖</a></p>
-    </div>
-
-  </div>
-</section>
-
+  <!-- 登山裝備 -->
   <section id="gear">
+
     <h2>登山裝備</h2>
-    <div class="cards">
-      <div class="card"><h3>登山鞋</h3><p>認識鞋底抓地力、支撐性與合腳的重要性。</p></div>
-      <div class="card"><h3>登山背包</h3><p>依照行程天數與負重需求挑選適合的背包。</p></div>
-      <div class="card"><h3>登山衣物</h3><p>了解排汗、保暖與防風防雨的分層穿搭。</p></div>
+
+    <div class="info-box">
+      <h3>為每一次登山做好準備</h3>
+      <p>
+        從登山鞋、背包到保暖與防雨裝備，
+        根據路線難度、天氣及行程天數，
+        選擇合適的裝備，讓登山更加安全舒適。
+      </p>
     </div>
+
   </section>
+
+  <!-- 聯絡我們 -->
   <section id="contact">
+
     <h2>聯絡我們</h2>
-    <p>歡迎喜歡登山的朋友一起認識看山小！聯絡資訊即將公布。</p>
+
+    <div class="info-box">
+      <p>
+        喜歡登山，也想認識更多熱愛山林的朋友嗎？
+        歡迎持續關注看山小，一起探索台灣的山林。
+      </p>
+      <p>團隊聯絡資訊將陸續公布。</p>
+    </div>
+
   </section>
-  <footer>© 2026 看山小登山團隊</footer>
+
+  <footer>
+    © 2026 看山小登山團隊
+    <p>走進山林，看見更遼闊的自己</p>
+  </footer>
+
 </body>
 </html>
-撰寫
-撰寫內容給陳博文
+
