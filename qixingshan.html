@@ -17,6 +17,115 @@ h2{color:#294b3a}
 .photo{background:#e0e9df;border:2px dashed #a3b6a4;border-radius:12px;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:#526b56}
 .tag{display:inline-block;background:#e0eddf;color:#294b3a;padding:4px 14px;border-radius:20px}
 footer{background:#294b3a;color:white;text-align:center;padding:20px}
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  background: #294b3a;
+  padding: 22px 15px;
+  position: relative;
+  z-index: 10;
+}
+
+.main-nav a,
+.main-nav summary {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.main-nav details {
+  position: relative;
+}
+
+.main-nav summary {
+  list-style: none;
+}
+
+.main-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+.main-nav summary::after {
+  content: " ▾";
+}
+
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  background: #294b3a;
+  padding: 22px 15px;
+  position: relative;
+  z-index: 10;
+}
+
+.main-nav a,
+.main-nav summary {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0;
+}
+
+.main-nav details {
+  position: relative;
+}
+
+.main-nav summary {
+  list-style: none;
+}
+
+.main-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+.main-nav summary::after {
+  content: " ▾";
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #294b3a;
+  min-width: 210px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px #0003;
+  text-align: left;
+  z-index: 100;
+}
+
+.dropdown-menu details {
+  margin-bottom: 12px;
+}
+
+.dropdown-menu summary {
+  background: #416b52;
+  border-radius: 7px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 7px 12px;
+}
+
+.dropdown-menu a:hover {
+  background: #416b52;
+  border-radius: 6px;
+}
+
 </style>
 </head>
 <body>
