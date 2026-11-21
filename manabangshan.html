@@ -67,6 +67,77 @@
       text-align: center;
       padding: 24px;
     }
+ .main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  background: #294b3a;
+  padding: 22px 15px;
+  position: relative;
+  z-index: 10;
+}
+
+.main-nav a,
+.main-nav summary {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0;
+}
+
+.main-nav details {
+  position: relative;
+}
+
+.main-nav summary {
+  list-style: none;
+}
+
+.main-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+.main-nav summary::after {
+  content: " ▾";
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #294b3a;
+  min-width: 210px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px #0003;
+  text-align: left;
+  z-index: 100;
+}
+
+.dropdown-menu details {
+  margin-bottom: 12px;
+}
+
+.dropdown-menu summary {
+  background: #416b52;
+  border-radius: 7px;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 7px 12px;
+}
+
+.dropdown-menu a:hover {
+  background: #416b52;
+  border-radius: 6px;
+}
   </style>
 </head>
 <body>
@@ -75,12 +146,47 @@
   <h1>看山小</h1>
   <p>走進山林，看見更遼闊的自己</p>
 </header>
+<nav class="main-nav">
+  <a href="index.html">首頁</a>
+  <a href="index.html#about">關於我們</a>
 
-<nav>
-  <a href="index.html">返回首頁</a>
-  <a href="index.html#trips">登山行程</a>
+  <details>
+    <summary>登山行程</summary>
+    <div class="dropdown-menu">
+      <details>
+        <summary>新手入門</summary>
+        <a href="xiangshan.html">象山</a>
+        <a href="qixingshan.html">七星山</a>
+        <a href="guanyinshan.html">觀音山</a>
+      </details>
+
+      <details>
+        <summary>中級訓練</summary>
+        <a href="tamanshan.html">塔曼山</a>
+        <a href="manabangshan.html">馬那邦山</a>
+        <a href="baxianshan.html">八仙山</a>
+      </details>
+
+      <details>
+        <summary>高級挑戰</summary>
+        <a href="yushan.html">玉山主峰</a>
+        <a href="hehuanmain.html">合歡主峰</a>
+        <a href="jiaminghu.html">嘉明湖</a>
+      </details>
+    </div>
+  </details>
+
+  <a href="gear.html">登山裝備</a>
+
+  <details>
+    <summary>山林知識</summary>
+    <div class="dropdown-menu">
+      <a href="lnt.html">無痕山林七大原則</a>
+    </div>
+  </details>
+
+  <a href="index.html#contact">聯絡我們</a>
 </nav>
-
 <main>
   <div class="card">
     <span class="tag">中級訓練</span>
