@@ -28,17 +28,61 @@
       border-radius: 8px;
     }
 
-    nav {
-      background: #294b3a;
-      text-align: center;
-      padding: 0 20px 22px;
-    }
+   nav {
+    background: #294b3a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 14px 20px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 14px;
-    }
+nav a,
+nav summary {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+nav details {
+    position: relative;
+}
+
+nav summary {
+    list-style: none;
+}
+
+nav summary::-webkit-details-marker {
+    display: none;
+}
+
+nav summary::after {
+    content: " ▾";
+}
+
+nav details > div {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 170px;
+    background: #294b3a;
+    padding: 12px;
+    border-radius: 8px;
+    z-index: 100;
+}
+
+nav details > div a {
+    display: block;
+    padding: 8px;
+    white-space: nowrap;
+}
+
+nav a:hover,
+nav summary:hover {
+    color: #c6dfb5;
+}
 
     .hero {
       text-align: center;
