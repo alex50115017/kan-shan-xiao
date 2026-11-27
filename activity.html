@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>活動詳細資訊｜看山小</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #f4f6f2;
+      color: #294b3a;
+      line-height: 1.8;
+    }
+
+    /* 活動主照片 */
+
+    .activity-cover {
+      max-width: 1100px;
+      margin: 35px auto 0;
+      padding: 0 20px;
+    }
+
+    .activity-cover img {
+      display: block;
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* 主要內容 */
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px 70px;
+    }
+
+    .activity-category {
+      font-size: 15px;
+      color: #416b52;
+      letter-spacing: 1px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 38px);
+      line-height: 1.4;
+      margin: 10px 0;
+    }
+
+    h2 {
+      font-size: 25px;
+      margin: 35px 0 15px;
+    }
+
+    .activity-status {
+      font-size: 15px;
+      font-weight: bold;
+      color: #627568;
+    }
+
+    .status-open {
+      color: #327044;
+    }
+
+    .status-full {
+      color: #a46a37;
+    }
+
+    .status-ended {
+      color: #777777;
+    }
+
+    .status-cancelled {
+      color: #985454;
+    }
+
+    /* 活動基本資訊 */
+
+    .information-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px 30px;
+      margin-top: 25px;
+      box-shadow: 0 6px 22px #0000000d;
+    }
+
+    .information-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid #e2e9e0;
+    }
+
+    .information-row:last-child {
+      border-bottom: none;
+    }
+
+    .information-label {
+      color: #526458;
+      flex-shrink: 0;
+    }
+
+    .information-value {
+      font-weight: bold;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    /* 活動介紹 */
+
+    .content-card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px 30px;
+      white-space: pre-line;
+      overflow-wrap: anywhere;
+    }
+
+    /* 行程規劃 */
+
+    .itinerary-day {
+      padding: 15px 0;
+      border-bottom: 1px solid #e2e9e0;
+    }
+
+    .itinerary-day:last-child {
+      border-bottom: none;
+    }
+
+    .itinerary-day h3 {
+      font-size: 19px;
+      margin: 0 0 8px;
+    }
+
+    .itinerary-day p {
+      color: #526458;
+      margin: 0;
+      white-space: pre-line;
+    }
+
+    /* 可展開資訊 */
+
+    .detail-sections {
+      margin-top: 30px;
+    }
+
+    .detail-sections details {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .detail-sections summary {
+      padding: 20px 25px;
+      font-size: 17px;
+      font-weight: bold;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .detail-sections summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .detail-sections summary::after {
+      content: "＋";
+      color: #416b52;
+      font-size: 20px;
+    }
+
+    .detail-sections details[open] summary::after {
+      content: "－";
+    }
+
+    .detail-content {
+      padding: 0 25px 25px;
+      color: #526458;
+      white-space: pre-line;
+      overflow-wrap: anywhere;
+    }
+
+    /* 報名按鈕 */
+
+    .registration-area {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .registration-button {
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      background: #294b3a;
+      color: white;
+      padding: 18px 20px;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .registration-button:disabled {
+      background: #85988b;
+      color: white;
+      opacity: 1;
+    }
+
+    .registration-note {
+      font-size: 13px;
+      color: #526458;
+      margin-top: 10px;
+    }
+
+    .back-link {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0;
+      color: #416b52;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* 找不到活動 */
+
+    .error-message {
+      background: white;
+      border-radius: 15px;
+      padding: 50px 25px;
+      text-align: center;
+    }
+
+    /* 頁尾 */
+
+    footer {
+      background: #294b3a;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    /* 手機響應式排版 */
+
+    @media (max-width: 768px) {
+
+      .activity-cover {
+        margin-top: 20px;
+        padding: 0 15px;
+      }
+
+      .activity-cover img {
+        max-height: 280px;
+      }
+
+      main {
+        padding: 25px 15px 50px;
+      }
+
+      h2 {
+        font-size: 22px;
+      }
+
+      .information-card {
+        padding: 12px 18px;
+      }
+
+      .information-row {
+        font-size: 14px;
+        gap: 12px;
+      }
+
+      .content-card {
+        padding: 20px;
+      }
+
+      .detail-sections summary {
+        font-size: 16px;
+        padding: 17px 20px;
+      }
+
+      .detail-content {
+        padding: 0 20px 20px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- 全站共用導覽列 -->
+
+  <div id="site-header"></div>
+  <script src="header.js"></script>
+
+  <!-- 活動主照片 -->
+
+  <div class="activity-cover"
+       id="coverArea"
+       hidden>
+
+    <img id="coverImage" alt="">
+
+  </div>
+
+  <main>
+
+    <!-- 異常提示 -->
+
+    <div id="errorArea"
+         class="error-message"
+         hidden>
+
+      <h1>找不到活動</h1>
+
+      <p id="errorText">
+        此活動可能尚未建立或已經移除。
+      </p>
+
+      <a href="activities.html"
+         class="back-link">
+        返回活動總覽
+      </a>
+
+    </div>
+
+    <!-- 活動詳細內容 -->
+
+    <article id="activityContent" hidden>
+
+      <div class="activity-category"
+           id="activityCategory"></div>
+
+      <h1 id="activityName"></h1>
+
+      <div class="activity-status"
+           id="activityStatus"></div>
+
+      <!-- 基本資訊 -->
+
+      <div class="information-card">
+
+        <div class="information-row">
+          <span class="information-label">活動日期</span>
+          <span class="information-value"
+                id="activityDate"></span>
+        </div>
+
+        <div class="information-row">
+          <span class="information-label">活動天數</span>
+          <span class="information-value"
+                id="activityDuration"></span>
+        </div>
+
+        <div class="information-row">
+          <span class="information-label">活動難度</span>
+          <span class="information-value"
+                id="activityDifficulty"></span>
+        </div>
+
+        <div class="information-row">
+          <span class="information-label">住宿方式</span>
+          <span class="information-value"
+                id="activityAccommodation"></span>
+        </div>
+
+        <div class="information-row">
+          <span class="information-label">活動人數</span>
+          <span class="information-value"
+                id="activityCapacity"></span>
+        </div>
+
+        <div class="information-row">
+          <span class="information-label">活動費用</span>
+          <span class="information-value"
+                id="activityFee"></span>
+        </div>
+
+      </div>
+
+      <!-- 活動介紹 -->
+
+      <h2>活動介紹</h2>
+
+      <div class="content-card"
+           id="activityIntroduction"></div>
+
+      <!-- 行程規劃 -->
+
+      <h2>行程規劃</h2>
+
+      <div class="content-card"
+           id="activityItinerary"></div>
+
+      <!-- 可展開資訊 -->
+
+      <div class="detail-sections">
+
+        <details>
+          <summary>參加資格與體能要求</summary>
+          <div class="detail-content"
+               id="activityRequirements"></div>
+        </details>
+
+        <details>
+          <summary>個人裝備清單</summary>
+          <div class="detail-content"
+               id="activityEquipment"></div>
+        </details>
+
+        <details>
+          <summary>交通及集合資訊</summary>
+          <div class="detail-content"
+               id="activityTransport"></div>
+        </details>
+
+        <details>
+          <summary>活動注意事項</summary>
+          <div class="detail-content"
+               id="activityNotes"></div>
+        </details>
+
+        <details>
+          <summary>費用及取消規定</summary>
+          <div class="detail-content"
+               id="activityCancellation"></div>
+        </details>
+
+      </div>
+
+      <!-- 報名區域 -->
+
+      <div class="registration-area">
+
+        <button type="button"
+                class="registration-button"
+                id="registrationButton"
+                disabled>
+          尚未開放報名
+        </button>
+
+        <p class="registration-note"
+           id="registrationNote">
+          報名資訊將於確認後公布。
+        </p>
+
+        <a href="activities.html"
+           class="back-link">
+          返回活動總覽
+        </a>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <footer>
+    © 2026 看山小登山團隊
+    <p>走進山林，看見更遼闊的自己</p>
+  </footer>
+
+  <!-- 共用活動資料 -->
+
+  <script src="activities.js"></script>
+
+  <script>
+
+    (() => {
+
+      const system =
+        window.KanShanXiaoActivities;
+
+      const params =
+        new URLSearchParams(window.location.search);
+
+      const activityId = params.get("id");
+
+      const fallback = "尚未公布";
+
+      function setText(id, value) {
+
+        document.getElementById(id).textContent =
+          value === undefined ||
+          value === null ||
+          value === ""
+            ? fallback
+            : String(value);
+
+      }
+
+      function showError(message) {
+
+        document.getElementById("errorArea").hidden =
+          false;
+
+        setText("errorText", message);
+
+      }
+
+      /* 確認活動資料 */
+
+      if (!system) {
+
+        showError("活動資料暫時無法載入，請稍後再試。");
+
+        return;
+
+      }
+
+      const activity =
+        system.getAllActivities().find(item =>
+          item.id === activityId
+        );
+
+      if (!activity) {
+
+        showError("此活動可能尚未建立或已經移除。");
+
+        return;
+
+      }
+
+      /* 日期格式 */
+
+      function formatDate(date) {
+
+        return date.replace(/-/g, "/");
+
+      }
+
+      const startDate = activity.startDate;
+
+      const endDate =
+        activity.endDate || startDate;
+
+      const fullDate = startDate === endDate
+        ? formatDate(startDate)
+        : formatDate(startDate) +
+          "－" + formatDate(endDate);
+
+      /* 計算活動天數 */
+
+      const startTime =
+        Date.parse(startDate + "T00:00:00Z");
+
+      const endTime =
+        Date.parse(endDate + "T00:00:00Z");
+
+      const days =
+        Math.round(
+          (endTime - startTime) / 86400000
+        ) + 1;
+
+      const duration = days === 1
+        ? "單日行程"
+        : days + " 天 " + (days - 1) + " 夜";
+
+      /* 判斷活動狀態 */
+
+      const isUpcoming =
+        system.getUpcomingActivities().some(item =>
+          item.id === activity.id
+        );
+
+      let status = activity.status;
+
+      if (!isUpcoming && status !== "已取消") {
+
+        status = "已結束";
+
+      }
+
+      /* 頁面標題及基本資訊 */
+
+      document.title =
+        activity.name + "｜看山小";
+
+      setText("activityCategory",
+        activity.difficulty);
+
+      setText("activityName",
+        activity.name);
+
+      setText("activityStatus", status);
+
+      setText("activityDate", fullDate);
+
+      setText("activityDuration",
+        activity.duration || duration);
+
+      setText("activityDifficulty",
+        activity.difficulty);
+
+      setText("activityAccommodation",
+        activity.accommodation);
+
+      setText("activityCapacity",
+        activity.capacity);
+
+      setText("activityFee",
+        activity.fee);
+
+      /* 活動狀態配色 */
+
+      const statusElement =
+        document.getElementById("activityStatus");
+
+      const statusClasses = {
+        "報名中": "status-open",
+        "已額滿": "status-full",
+        "已結束": "status-ended",
+        "已取消": "status-cancelled"
+      };
+
+      if (statusClasses[status]) {
+
+        statusElement.classList.add(
+          statusClasses[status]
+        );
+
+      }
+
+      /* 活動主照片 */
+
+      if (activity.image) {
+
+        const image =
+          document.getElementById("coverImage");
+
+        const cover =
+          document.getElementById("coverArea");
+
+        image.alt =
+          activity.name + "活動照片";
+
+        image.addEventListener("load", () => {
+
+          cover.hidden = false;
+
+        });
+
+        image.addEventListener("error", () => {
+
+          cover.hidden = true;
+
+        });
+
+        image.src = activity.image;
+
+      }
+
+      /* 活動介紹 */
+
+      setText(
+        "activityIntroduction",
+        activity.introduction ||
+        "詳細活動介紹將於確認後公布。"
+      );
+
+      /* 行程規劃 */
+
+      const itinerary =
+        document.getElementById("activityItinerary");
+
+      if (
+        Array.isArray(activity.itinerary) &&
+        activity.itinerary.length > 0
+      ) {
+
+        activity.itinerary.forEach(day => {
+
+          const section =
+            document.createElement("div");
+
+          section.className = "itinerary-day";
+
+          const heading =
+            document.createElement("h3");
+
+          heading.textContent =
+            day.title || "行程規劃";
+
+          const content =
+            document.createElement("p");
+
+          content.textContent =
+            day.content || "詳細行程待確認";
+
+          section.append(heading, content);
+
+          itinerary.appendChild(section);
+
+        });
+
+      } else {
+
+        itinerary.textContent =
+          "詳細路線及行程時間將於確認後公布。";
+
+      }
+
+      /* 其他活動資訊 */
+
+      setText("activityRequirements",
+        activity.requirements);
+
+      setText("activityEquipment",
+        activity.equipment);
+
+      setText("activityTransport",
+        activity.transport);
+
+      setText("activityNotes",
+        activity.notes);
+
+      setText("activityCancellation",
+        activity.cancellation);
+
+      /* 展開單一資訊區塊 */
+
+      const sections =
+        document.querySelectorAll(
+          ".detail-sections details"
+        );
+
+      sections.forEach(section => {
+
+        section.addEventListener("toggle", () => {
+
+          if (section.open) {
+
+            sections.forEach(other => {
+
+              if (other !== section) {
+
+                other.open = false;
+
+              }
+
+            });
+
+          }
+
+        });
+
+      });
+
+      /* 報名功能預留 */
+
+      const registrationButton =
+        document.getElementById("registrationButton");
+
+      if (status === "已額滿") {
+
+        registrationButton.textContent =
+          "活動已額滿";
+
+      } else if (status === "已結束") {
+
+        registrationButton.textContent =
+          "活動已結束";
+
+      } else if (status === "已取消") {
+
+        registrationButton.textContent =
+          "活動已取消";
+
+      } else if (status === "報名中") {
+
+        registrationButton.textContent =
+          "線上報名系統建置中";
+
+      } else {
+
+        registrationButton.textContent =
+          "尚未開放報名";
+
+      }
+
+      /* 顯示活動詳細頁面 */
+
+      document.getElementById(
+        "activityContent"
+      ).hidden = false;
+
+    })();
+
+  </script>
+
+</body>
+</html>
