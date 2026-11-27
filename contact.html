@@ -359,10 +359,16 @@ footer {
     <p>合作邀約、網站建議與相關問題。</p>
     <p>alex50115017@gmail.com</p>
 
-    <a class="contact-button"
-       href="mailto:alex50115017@gmail.com">
-      寄送郵件
-    </a>
+    <button class="contact-button"
+        type="button"
+        onclick="copyEmail()">
+  複製 Email
+</button>
+
+<p id="email-status"
+   aria-live="polite"
+   style="font-size:13px; min-height:22px; margin-bottom:0;">
+</p>
 
   </article>
 
@@ -557,7 +563,25 @@ footer {
 </footer>
 
 <script>
+// 複製 Email
 
+async function copyEmail() {
+
+  const status = document.getElementById("email-status");
+
+  try {
+
+    await navigator.clipboard.writeText("alex50115017@gmail.com");
+
+    status.textContent = "Email 已複製！";
+
+  } catch (error) {
+
+    status.textContent = "請手動複製 Email：alex50115017@gmail.com";
+
+  }
+
+}
 // 複製 LINE ID
 
 async function copyLineID() {
