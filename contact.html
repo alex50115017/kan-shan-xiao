@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>聯絡我們｜看山小</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+  background: #f4f6f2;
+  color: #294b3a;
+  line-height: 1.7;
+}
+
+.hero {
+  background: #edf2e9;
+  text-align: center;
+  padding: 45px 20px;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin: 0 0 10px;
+}
+
+.hero p {
+  margin: 0;
+  color: #416b52;
+}
+
+main {
+  max-width: 1100px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+/* 聯絡資訊卡片 */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-bottom: 35px;
+}
+
+.contact-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+  transition: transform 0.3s;
+  overflow-wrap: anywhere;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  width: 46px;
+  height: 46px;
+  color: #416b52;
+  margin-bottom: 8px;
+}
+
+.contact-card h2 {
+  margin: 8px 0;
+  font-size: 23px;
+}
+
+.contact-card p {
+  color: #64796a;
+  font-size: 15px;
+}
+
+.contact-button {
+  display: inline-block;
+  background: #416b52;
+  color: white;
+  padding: 11px 23px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: none;
+  font-family: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.contact-button:hover {
+  background: #294b3a;
+}
+
+/* 線上聯絡表單 */
+
+.form-card {
+  background: white;
+  border-radius: 16px;
+  padding: 35px;
+  max-width: 800px;
+  margin: 0 auto 35px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.form-card h2 {
+  text-align: center;
+  font-size: 27px;
+  margin: 0 0 10px;
+}
+
+.form-description {
+  text-align: center;
+  color: #64796a;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.required {
+  color: #a94442;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #cbd5cc;
+  border-radius: 8px;
+  background: #fafcf9;
+  color: #294b3a;
+  font-size: 16px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: 2px solid #416b52;
+  border-color: #416b52;
+}
+
+.form-group textarea {
+  min-height: 170px;
+  resize: vertical;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.consent input {
+  accent-color: #416b52;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.privacy-note {
+  background: #edf2e9;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #416b52;
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  width: 100%;
+  background: #416b52;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px;
+  font-family: inherit;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-button:hover {
+  background: #294b3a;
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* 防垃圾留言隱藏欄位 */
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.reminder {
+  text-align: center;
+  padding: 25px 15px;
+  background: #edf2e9;
+  border-radius: 12px;
+  margin-bottom: 35px;
+}
+
+.reminder h3 {
+  margin: 0 0 10px;
+}
+
+.reminder p {
+  margin: 0;
+}
+
+footer {
+  background: #294b3a;
+  color: white;
+  text-align: center;
+  padding: 22px 15px;
+  font-size: 14px;
+}
+
+#line-status {
+  font-size: 13px;
+  min-height: 22px;
+  margin-bottom: 0;
+}
+
+/* 手機版 */
+
+@media (max-width: 768px) {
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .hero {
+    padding: 35px 15px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
+
+  main {
+    margin: 25px auto;
+    padding: 0 15px;
+  }
+
+  .form-card {
+    padding: 25px 18px;
+  }
+
+  .form-card h2 {
+    font-size: 24px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 共用首頁 LOGO 與導覽列 -->
+
+<div id="site-header"></div>
+<script src="header.js"></script>
+
+<!-- 頁面標題 -->
+
+<section class="hero">
+  <h1>聯絡我們</h1>
+  <p>每一段山林旅程，都從一次交流開始。</p>
+</section>
+
+<main>
+
+<!-- 聯絡資訊 -->
+
+<section class="contact-grid">
+
+  <!-- Instagram -->
+
+  <article class="contact-card">
+
+    <svg class="contact-icon" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="1.6" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle cx="17.5" cy="6.5" r="0.8"
+              fill="currentColor"/>
+    </svg>
+
+    <h2>Instagram</h2>
+    <p>追蹤我們的山林日常與登山紀錄。</p>
+    <p>@alex_50115017</p>
+
+    <a class="contact-button"
+       href="https://www.instagram.com/alex_50115017/"
+       target="_blank"
+       rel="noopener noreferrer">
+      前往追蹤
+    </a>
+
+  </article>
+
+  <!-- Email -->
+
+  <article class="contact-card">
+
+    <svg class="contact-icon" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="1.6" aria-hidden="true">
+      <rect x="2" y="4" width="20" height="16" rx="2"/>
+      <path d="M2 6L12 13L22 6"/>
+    </svg>
+
+    <h2>Email</h2>
+    <p>合作邀約、網站建議與相關問題。</p>
+    <p>alex50115017@gmail.com</p>
+
+    <a class="contact-button"
+       href="mailto:alex50115017@gmail.com">
+      寄送郵件
+    </a>
+
+  </article>
+
+  <!-- LINE -->
+
+  <article class="contact-card">
+
+    <svg class="contact-icon" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor"
+         stroke-width="1.6" aria-hidden="true">
+      <path d="M21 11a9 9 0 0 1-9 9H9l-5 3 1-6
+               a9 9 0 1 1 16-6Z"/>
+      <path d="M7 11h2M11 11h2M15 11h2"/>
+    </svg>
+
+    <h2>LINE</h2>
+    <p>登山交流與即時聯繫。</p>
+    <p>LINE ID：50115017</p>
+
+    <button class="contact-button"
+            type="button"
+            onclick="copyLineID()">
+      複製 LINE ID
+    </button>
+
+    <p id="line-status" aria-live="polite"></p>
+
+  </article>
+
+</section>
+
+<!-- 線上聯絡表單 -->
+
+<section class="form-card">
+
+  <h2>線上聯絡表單</h2>
+
+  <p class="form-description">
+    有任何登山相關問題、合作邀約或網站建議，
+    歡迎留言給我們。
+  </p>
+
+  <form id="contact-form"
+        action="https://script.google.com/macros/s/AKfycbytpp8CphLp-KLCIiCFUc14xXu0LZmXG8opQo1F2uNOEaj6fq-Q_SoaBHU_ffSnA2vq/exec"
+        method="POST">
+
+    <!-- 姓名 -->
+
+    <div class="form-group">
+
+      <label for="name">
+        姓名 <span class="required">*</span>
+      </label>
+
+      <input type="text"
+             id="name"
+             name="name"
+             placeholder="請輸入您的姓名"
+             autocomplete="name"
+             maxlength="80"
+             required>
+
+    </div>
+
+    <!-- 電子郵件 -->
+
+    <div class="form-group">
+
+      <label for="email">
+        電子郵件 <span class="required">*</span>
+      </label>
+
+      <input type="email"
+             id="email"
+             name="email"
+             placeholder="請輸入您的電子郵件"
+             autocomplete="email"
+             maxlength="254"
+             required>
+
+    </div>
+
+    <!-- 聯絡主旨 -->
+
+    <div class="form-group">
+
+      <label for="subject">聯絡主旨</label>
+
+      <select id="subject" name="subject">
+
+        <option value="一般聯繫">一般聯繫</option>
+
+        <option value="登山行程諮詢">
+          登山行程諮詢
+        </option>
+
+        <option value="裝備相關問題">
+          裝備相關問題
+        </option>
+
+        <option value="合作邀約">合作邀約</option>
+
+        <option value="網站建議">網站建議</option>
+
+        <option value="其他">其他</option>
+
+      </select>
+
+    </div>
+
+    <!-- 聯絡內容 -->
+
+    <div class="form-group">
+
+      <label for="message">
+        聯絡內容 <span class="required">*</span>
+      </label>
+
+      <textarea id="message"
+                name="message"
+                placeholder="請輸入您想與我們分享的內容……"
+                maxlength="3000"
+                required></textarea>
+
+    </div>
+
+    <!-- 防垃圾留言 -->
+
+    <div class="honeypot" aria-hidden="true">
+
+      <label for="website">請勿填寫此欄位</label>
+
+      <input type="text"
+             id="website"
+             name="website"
+             tabindex="-1"
+             autocomplete="off">
+
+    </div>
+
+    <!-- 個人資料使用同意 -->
+
+    <div class="privacy-note">
+      您所提供的姓名、電子郵件及聯絡內容，
+      將儲存於團隊的聯絡管理系統，
+      供看山小負責聯絡的團隊成員處理留言及回覆使用。
+      請勿填寫身分證字號、密碼或其他敏感個人資料。
+    </div>
+
+    <label class="consent">
+
+      <input type="checkbox"
+             name="consent"
+             value="yes"
+             required>
+
+      <span>
+        我同意提供上述資料供看山小聯絡及回覆使用。
+        <span class="required">*</span>
+      </span>
+
+    </label>
+
+    <button type="submit"
+            id="submit-button"
+            class="submit-button">
+      送出訊息
+    </button>
+
+  </form>
+
+</section>
+
+<!-- 頁尾提醒 -->
+
+<section class="reminder">
+
+  <h3>期待與你相遇在山林</h3>
+
+  <p>
+    無論你是剛踏入山林的新手，
+    還是熱愛探索的山友，
+    都歡迎與我們交流。
+  </p>
+
+</section>
+
+</main>
+
+<footer>
+  © 看山小登山團隊
+</footer>
+
+<script>
+
+// 複製 LINE ID
+
+async function copyLineID() {
+
+  const status = document.getElementById("line-status");
+
+  try {
+
+    await navigator.clipboard.writeText("50115017");
+
+    status.textContent = "LINE ID 已複製！";
+
+  } catch (error) {
+
+    status.textContent = "請手動複製 LINE ID：50115017";
+
+  }
+
+}
+
+// 防止表單重複送出
+
+const contactForm = document.getElementById("contact-form");
+const submitButton = document.getElementById("submit-button");
+
+contactForm.addEventListener("submit", function() {
+
+  submitButton.disabled = true;
+  submitButton.textContent = "訊息傳送中，請稍候……";
+
+});
+
+window.addEventListener("pageshow", function() {
+
+  submitButton.disabled = false;
+  submitButton.textContent = "送出訊息";
+
+});
+
+</script>
+
+</body>
+</html>
