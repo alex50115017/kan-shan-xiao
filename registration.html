@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>登山活動報名｜看山小</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f2;
+  color: #294b3a;
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+  line-height: 1.8;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.registration-hero {
+  background: #416b52;
+  color: white;
+  padding: 45px 20px;
+  text-align: center;
+}
+
+.registration-hero h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.registration-hero p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  letter-spacing: 3px;
+}
+
+.registration-main {
+  max-width: 850px;
+  margin: 35px auto;
+  padding: 0 20px;
+}
+
+.activity-summary {
+  background: #e8eee7;
+  border-left: 5px solid #416b52;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.activity-summary h2 {
+  margin: 5px 0 12px;
+  font-size: 25px;
+}
+
+.activity-summary p {
+  margin: 5px 0;
+}
+
+.activity-label {
+  font-size: 13px;
+  color: #416b52;
+  font-weight: bold;
+}
+
+.activity-status {
+  display: inline-block;
+  background: #d8ead9;
+  color: #28633b;
+  border-radius: 5px;
+  padding: 3px 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.registration-card {
+  background: white;
+  border-radius: 12px;
+  padding: 35px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.form-section {
+  margin-bottom: 30px;
+}
+
+.form-section h2 {
+  font-size: 22px;
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dce4da;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.required {
+  color: #a74444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd6ca;
+  border-radius: 7px;
+  background: #fff;
+  color: #294b3a;
+  font: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: 2px solid #416b52;
+  outline-offset: 1px;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.field-hint {
+  font-size: 13px;
+  color: #68796c;
+  margin: 5px 0 0;
+}
+
+.consent-box {
+  background: #f4f6f2;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.consent-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 15px 0;
+  font-size: 15px;
+}
+
+.consent-item input {
+  width: 18px;
+  height: 18px;
+  margin-top: 5px;
+  flex-shrink: 0;
+  accent-color: #416b52;
+}
+
+.information-details {
+  border: 1px solid #dce4da;
+  border-radius: 7px;
+  padding: 12px 15px;
+  margin: 12px 0;
+  background: white;
+}
+
+.information-details summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.information-details p {
+  font-size: 14px;
+  margin: 12px 0 5px;
+}
+
+.test-notice {
+  background: #fff5df;
+  color: #806124;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  border: none;
+  background: #294b3a;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: bold;
+  font-size: 17px;
+  transition: background .2s;
+}
+
+.submit-button:hover {
+  background: #416b52;
+}
+
+.submit-button:disabled {
+  background: #a6afa6;
+  cursor: not-allowed;
+}
+
+.submit-note {
+  text-align: center;
+  font-size: 13px;
+  color: #68796c;
+  margin: 15px 0 0;
+}
+
+.back-area {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.back-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #416b52;
+  border: 1px solid #416b52;
+  padding: 10px 22px;
+  border-radius: 7px;
+}
+
+.back-link:hover {
+  background: #416b52;
+  color: white;
+}
+
+.error-card {
+  background: white;
+  border-radius: 12px;
+  padding: 35px 25px;
+  text-align: center;
+}
+
+.honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.registration-footer {
+  background: #294b3a;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+
+  .registration-hero {
+    padding: 30px 15px;
+  }
+
+  .registration-hero h1 {
+    font-size: 26px;
+  }
+
+  .registration-main {
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .registration-card {
+    padding: 22px 18px;
+  }
+
+  .activity-summary {
+    padding: 20px;
+  }
+
+  .activity-summary h2 {
+    font-size: 22px;
+  }
+
+  .form-section h2 {
+    font-size: 20px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 全站共用導覽列 -->
+
+<div id="site-header"></div>
+<script src="header.js"></script>
+
+<!-- 頁面標題 -->
+
+<section class="registration-hero">
+
+  <h1>登山活動報名</h1>
+  <p>HIKING REGISTRATION</p>
+
+</section>
+
+<main class="registration-main">
+
+  <!-- 無效活動提示 -->
+
+  <section id="errorArea"
+           class="error-card"
+           hidden>
+
+    <h2>目前無法報名</h2>
+
+    <p id="errorText"></p>
+
+    <a class="back-link"
+       href="activities.html">
+      返回活動總覽
+    </a>
+
+  </section>
+
+  <!-- 報名主要內容 -->
+
+  <div id="registrationContent" hidden>
+
+    <!-- 自動載入活動資料 -->
+
+    <section class="activity-summary">
+
+      <div class="activity-label">
+        報名活動
+      </div>
+
+      <h2 id="activityName"></h2>
+
+      <p>
+        活動日期：
+        <span id="activityDate"></span>
+      </p>
+
+      <p>
+        活動難度：
+        <span id="activityDifficulty"></span>
+      </p>
+
+      <span class="activity-status">
+        報名中
+      </span>
+
+    </section>
+
+    <!-- 測試階段提示 -->
+
+    <div class="test-notice">
+
+      <strong>網站功能測試中</strong>
+
+      <br>
+
+      目前尚未正式開放活動報名。
+      請勿填寫真實個人資料，
+      僅供網站管理員使用虛構資料
+      及本人控制的測試信箱進行測試。
+
+    </div>
+
+    <!-- 報名表單 -->
+
+    <form id="registrationForm"
+          class="registration-card"
+          method="POST"
+          action="https://script.google.com/macros/s/AKfycbyZJUzU4-yRswoTPTePEb-7-4QTDaSTHXFKrkeLtxRPxDv5wWCWYFr3blqIeNd3Hrie/exec">
+
+      <!-- 自動帶入活動 ID -->
+
+      <input type="hidden"
+             id="activityId"
+             name="activityId">
+
+      <!-- 防垃圾訊息隱藏欄位 -->
+
+      <div class="honeypot"
+           aria-hidden="true">
+
+        <label for="website">
+          請勿填寫
+        </label>
+
+        <input type="text"
+               id="website"
+               name="website"
+               tabindex="-1"
+               autocomplete="off">
+
+      </div>
+
+      <!-- 基本聯絡資料 -->
+
+      <section class="form-section">
+
+        <h2>基本聯絡資料</h2>
+
+        <div class="form-group">
+
+          <label for="name">
+            姓名
+            <span class="required">*</span>
+          </label>
+
+          <input type="text"
+                 id="name"
+                 name="name"
+                 maxlength="50"
+                 autocomplete="name"
+                 placeholder="請輸入姓名"
+                 required>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="phone">
+            聯絡電話
+            <span class="required">*</span>
+          </label>
+
+          <input type="tel"
+                 id="phone"
+                 name="phone"
+                 maxlength="20"
+                 autocomplete="tel"
+                 placeholder="請輸入聯絡電話"
+                 required>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="email">
+            電子郵件
+            <span class="required">*</span>
+          </label>
+
+          <input type="email"
+                 id="email"
+                 name="email"
+                 maxlength="254"
+                 autocomplete="email"
+                 placeholder="請輸入電子郵件"
+                 required>
+
+          <p class="field-hint">
+            報名收件確認及後續活動通知使用。
+          </p>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="lineId">
+            LINE ID（選填）
+          </label>
+
+          <input type="text"
+                 id="lineId"
+                 name="lineId"
+                 maxlength="80"
+                 placeholder="請輸入 LINE ID">
+
+        </div>
+
+      </section>
+
+      <!-- 登山經驗 -->
+
+      <section class="form-section">
+
+        <h2>登山經驗</h2>
+
+        <div class="form-group">
+
+          <label for="experience">
+            登山經驗程度
+            <span class="required">*</span>
+          </label>
+
+          <select id="experience"
+                  name="experience"
+                  required>
+
+            <option value="">
+              請選擇登山經驗
+            </option>
+
+            <option value="尚無登山經驗">
+              尚無登山經驗
+            </option>
+
+            <option value="郊山健行經驗">
+              郊山健行經驗
+            </option>
+
+            <option value="中級山登山經驗">
+              中級山登山經驗
+            </option>
+
+            <option value="百岳登山經驗">
+              百岳登山經驗
+            </option>
+
+            <option value="重裝及多日縱走經驗">
+              重裝及多日縱走經驗
+            </option>
+
+          </select>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="hikingHistory">
+            過往登山紀錄
+            <span class="required">*</span>
+          </label>
+
+          <textarea id="hikingHistory"
+                    name="hikingHistory"
+                    maxlength="2000"
+                    placeholder="請簡單描述曾經走過的登山路線、百岳或重裝縱走經驗。若無經驗，請填寫無。"
+                    required></textarea>
+
+          <p class="field-hint">
+            作為活動適合程度及人工審核參考。
+          </p>
+
+        </div>
+
+        <div class="form-group">
+
+          <label for="notes">
+            其他備註（選填）
+          </label>
+
+          <textarea id="notes"
+                    name="notes"
+                    maxlength="1000"
+                    placeholder="其他想向活動管理員說明的事項"></textarea>
+
+          <p class="field-hint">
+            請勿填寫身分證字號、
+            病歷或其他敏感個人資料。
+          </p>
+
+        </div>
+
+      </section>
+
+      <!-- 報名同意事項 -->
+
+      <section class="form-section">
+
+        <h2>報名同意事項</h2>
+
+        <div class="consent-box">
+
+          <details class="information-details">
+
+            <summary>活動參加條件</summary>
+
+            <p id="activityRequirements">
+              尚未公布正式活動條件。
+            </p>
+
+          </details>
+
+          <details class="information-details">
+
+            <summary>登山風險說明</summary>
+
+            <p>
+              登山活動可能面臨天候變化、
+              地形落差、迷途、跌倒、
+              高山反應及其他自然環境風險。
+              參加者應評估自身體能與經驗，
+              並準備適當裝備。
+            </p>
+
+          </details>
+
+          <details class="information-details">
+
+            <summary>個人資料使用說明（測試版）</summary>
+
+            <p>
+              本表單目前僅供網站功能測試。
+              測試資料將儲存於受限制存取的
+              Google 試算表，供管理員確認
+              報名、審核及電子郵件通知功能。
+              正式個資告知事項與資料保存期限
+              將於正式開放報名前另行公布。
+              請勿提交真實個人資料。
+            </p>
+
+          </details>
+
+          <label class="consent-item">
+
+            <input type="checkbox"
+                   name="agreeTerms"
+                   value="yes"
+                   required>
+
+            <span>
+              我已閱讀並同意活動參加條件。
+              <span class="required">*</span>
+            </span>
+
+          </label>
+
+          <label class="consent-item">
+
+            <input type="checkbox"
+                   name="agreeRisk"
+                   value="yes"
+                   required>
+
+            <span>
+              我了解登山活動具有一定風險。
+              <span class="required">*</span>
+            </span>
+
+          </label>
+
+          <label class="consent-item">
+
+            <input type="checkbox"
+                   name="agreePrivacy"
+                   value="yes"
+                   required>
+
+            <span>
+              我已閱讀並同意個人資料使用說明。
+              <span class="required">*</span>
+            </span>
+
+          </label>
+
+        </div>
+
+      </section>
+
+      <!-- 送出按鈕 -->
+
+      <button type="submit"
+              id="submitButton"
+              class="submit-button">
+
+        送出測試報名申請
+
+      </button>
+
+      <p class="submit-note">
+        送出申請不代表正式錄取，
+        請等待管理員審核。
+      </p>
+
+    </form>
+
+    <!-- 返回活動詳細頁 -->
+
+    <div class="back-area">
+
+      <a id="backActivity"
+         class="back-link"
+         href="activities.html">
+
+        ← 返回活動詳細頁面
+
+      </a>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="registration-footer">
+
+  看山小｜走進山林，看見更遼闊的自己。
+
+</footer>
+
+<!-- 共用活動資料庫 -->
+
+<script src="activities.js"></script>
+
+<script>
+
+(function () {
+
+  const system =
+    window.KanShanXiaoActivities;
+
+  const params =
+    new URLSearchParams(
+      window.location.search
+    );
+
+  const activityId =
+    params.get("id");
+
+  function showError(message) {
+
+    document.getElementById(
+      "errorText"
+    ).textContent = message;
+
+    document.getElementById(
+      "errorArea"
+    ).hidden = false;
+
+    document.getElementById(
+      "registrationContent"
+    ).hidden = true;
+
+  }
+
+  if (!system) {
+
+    showError(
+      "活動資料暫時無法載入，請稍後再試。"
+    );
+
+    return;
+
+  }
+
+  if (!activityId) {
+
+    showError(
+      "請先選擇欲報名的登山活動。"
+    );
+
+    return;
+
+  }
+
+  const activity =
+    system.getAllActivities().find(
+
+      item => item.id === activityId
+
+    );
+
+  if (!activity) {
+
+    showError(
+      "找不到此活動，活動可能已被移除。"
+    );
+
+    return;
+
+  }
+
+  /* 確認活動是否仍有效 */
+
+  const isUpcoming =
+    system.getUpcomingActivities().some(
+
+      item => item.id === activityId
+
+    );
+
+  if (!isUpcoming) {
+
+    showError(
+      "此活動已結束或取消。"
+    );
+
+    return;
+
+  }
+
+  /* 確認是否開放報名 */
+
+  if (activity.status !== "報名中") {
+
+    showError(
+      "此活動目前未開放報名。"
+    );
+
+    return;
+
+  }
+
+  /* 測試階段僅允許測試活動 */
+
+  if (!activityId.startsWith("test-")) {
+
+    showError(
+      "報名系統尚未正式開放。"
+    );
+
+    return;
+
+  }
+
+  /* 自動帶入活動資訊 */
+
+  function formatDate(date) {
+
+    return String(date || "")
+      .replace(/-/g, "/");
+
+  }
+
+  const startDate =
+    formatDate(activity.startDate);
+
+  const endDate =
+    formatDate(
+      activity.endDate ||
+      activity.startDate
+    );
+
+  const fullDate =
+    startDate === endDate
+
+      ? startDate
+
+      : startDate + "－" + endDate;
+
+  document.title =
+    activity.name + "｜活動報名｜看山小";
+
+  document.getElementById(
+    "activityName"
+  ).textContent = activity.name;
+
+  document.getElementById(
+    "activityDate"
+  ).textContent = fullDate;
+
+  document.getElementById(
+    "activityDifficulty"
+  ).textContent =
+    activity.difficulty || "尚未公布";
+
+  document.getElementById(
+    "activityId"
+  ).value = activity.id;
+
+  document.getElementById(
+    "activityRequirements"
+  ).textContent =
+    activity.requirements ||
+    "本活動目前為功能測試，正式參加條件尚未公布。";
+
+  document.getElementById(
+    "backActivity"
+  ).href =
+    "activity.html?id=" +
+    encodeURIComponent(activity.id);
+
+  /* 防止連續提交 */
+
+  const form =
+    document.getElementById(
+      "registrationForm"
+    );
+
+  const submitButton =
+    document.getElementById(
+      "submitButton"
+    );
+
+  let submitting = false;
+
+  form.addEventListener(
+    "submit",
+    function (event) {
+
+      if (submitting) {
+
+        event.preventDefault();
+
+        return;
+
+      }
+
+      submitting = true;
+
+      submitButton.disabled = true;
+
+      submitButton.textContent =
+        "報名資料傳送中，請稍候……";
+
+    }
+  );
+
+  /* 從瀏覽器返回時恢復按鈕 */
+
+  window.addEventListener(
+    "pageshow",
+    function () {
+
+      submitting = false;
+
+      submitButton.disabled = false;
+
+      submitButton.textContent =
+        "送出測試報名申請";
+
+    }
+  );
+
+  document.getElementById(
+    "registrationContent"
+  ).hidden = false;
+
+})();
+
+</script>
+
+</body>
+</html>
