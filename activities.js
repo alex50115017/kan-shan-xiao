@@ -15,7 +15,48 @@
       difficulty: "高級挑戰",
       description: "山屋住宿",
       status: "籌備中",
-      url: ""
+      url: "",
+
+      /* 活動詳細資料 */
+
+      image: "",
+      duration: "兩天一夜",
+      accommodation: "山屋住宿",
+      capacity: "尚未公布",
+      fee: "尚未公布",
+
+      introduction:
+        "【測試資料】屏風山兩天一夜登山活動，目前仍在籌備階段。正式活動內容將於確認後公布。",
+
+      itinerary: [
+
+        {
+          title: "DAY 1｜前往住宿地點",
+          content: "詳細路線、集合時間及住宿資訊待確認。"
+        },
+
+        {
+          title: "DAY 2｜登頂與返程",
+          content: "詳細登頂路線及返程時間待確認。"
+        }
+
+      ],
+
+      requirements:
+        "參加資格及體能要求尚待確認。",
+
+      equipment:
+        "個人裝備清單將於正式行程確認後公布。",
+
+      transport:
+        "集合地點、集合時間及交通方式尚待確認。",
+
+      notes:
+        "本活動目前為網站功能測試使用，並非正式活動公告。",
+
+      cancellation:
+        "活動費用、付款方式及取消規定尚未公布。"
+
     },
 
     {
