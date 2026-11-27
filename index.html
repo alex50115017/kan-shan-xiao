@@ -22,90 +22,6 @@
       line-height: 1.8;
     }
 
-    header {
-      background: #294b3a;
-      text-align: center;
-      padding: 25px 15px 0;
-    }
-
-    .logo {
-      display: block;
-      width: 100%;
-      max-width: 720px;
-      height: auto;
-      margin: auto;
-    }
-
-    .main-nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px 25px;
-      background: #294b3a;
-      padding: 22px 15px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .main-nav a,
-    .main-nav summary {
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .main-nav details {
-      position: relative;
-    }
-
-    .main-nav summary {
-      list-style: none;
-    }
-
-    .main-nav summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .main-nav summary::after {
-      content: " ▾";
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #294b3a;
-      min-width: 210px;
-      padding: 15px;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px #0003;
-      text-align: left;
-    }
-
-    .dropdown-menu details {
-      margin-bottom: 12px;
-    }
-
-    .dropdown-menu summary {
-      background: #416b52;
-      border-radius: 7px;
-      padding: 8px 12px;
-      text-align: center;
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 7px 12px;
-    }
-
-    .dropdown-menu a:hover {
-      background: #416b52;
-      border-radius: 6px;
-    }
-
     .hero {
       text-align: center;
       background: #e9efe7;
@@ -127,7 +43,7 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1440px;
       margin: auto;
     }
 
@@ -137,11 +53,24 @@
       margin-bottom: 30px;
     }
 
+    /* 首頁雙欄版面 */
+
+    .homepage-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(280px, 3fr);
+      align-items: start;
+      gap: 40px;
+    }
+
+    .about-content {
+      min-width: 0;
+    }
+
     .about-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      gap: 45px;
+      gap: 30px;
     }
 
     .slideshow {
@@ -197,6 +126,126 @@
       color: #294b3a !important;
     }
 
+    /* 近期活動區塊 */
+
+    .activities-panel {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 6px 22px #0000000d;
+    }
+
+    .activities-panel h2 {
+      font-size: 25px;
+      margin: 0;
+    }
+
+    .activities-subtitle {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #72947b;
+      margin: 0 0 18px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #416b52;
+    }
+
+    .activity-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 18px 0;
+      border-bottom: 1px solid #e2e9e0;
+      text-decoration: none;
+      color: #294b3a;
+    }
+
+    .activity-item[href]:hover {
+      background: #f4f6f2;
+    }
+
+    .activity-date {
+      flex-shrink: 0;
+      width: 58px;
+      padding: 8px 5px;
+      background: #e9efe7;
+      border-radius: 8px;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .activity-month {
+      display: block;
+      font-size: 13px;
+      color: #416b52;
+    }
+
+    .activity-day {
+      display: block;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .activity-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .activity-name {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .activity-description {
+      font-size: 13px;
+      color: #526458;
+      margin: 4px 0;
+    }
+
+    .activity-status {
+      font-size: 12px;
+      color: #416b52;
+    }
+
+    .activity-arrow {
+      font-size: 22px;
+      color: #72947b;
+    }
+
+    .activity-empty {
+      text-align: center;
+      color: #526458;
+      font-size: 15px;
+      padding: 25px 5px;
+    }
+
+    .all-activities {
+      display: block;
+      text-align: center;
+      background: #294b3a;
+      color: white;
+      padding: 11px 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      text-decoration: none;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+
+    .all-activities[href]:hover {
+      background: #416b52;
+    }
+
+    .all-activities[aria-disabled="true"] {
+      opacity: 0.65;
+    }
+
     .gear-section {
       background: #e9efe7;
     }
@@ -229,19 +278,34 @@
       padding: 30px 20px;
     }
 
-    @media (max-width: 768px) {
-      .main-nav {
-        gap: 10px 18px;
-      }
+    /* 平板版 */
 
-      .main-nav a,
-      .main-nav summary {
-        font-size: 15px;
+    @media (max-width: 1100px) {
+      .homepage-layout {
+        gap: 25px;
       }
 
       .about-layout {
         grid-template-columns: 1fr;
         gap: 25px;
+      }
+    }
+
+    /* 手機版 */
+
+    @media (max-width: 768px) {
+      .homepage-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .activities-panel {
+        padding: 22px;
       }
 
       .gear-grid {
@@ -255,125 +319,164 @@
       .hero {
         padding: 65px 20px;
       }
+    }
 
-      .dropdown-menu {
-        min-width: 190px;
+    /* 首頁標語動畫 */
+
+    .hero-slogan {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 600;
+      line-height: 2;
+      letter-spacing: 2px;
+      text-align: center;
+      color: #355b46;
+      animation: sloganFadeIn 1.5s ease-out both;
+    }
+
+    .hero-slogan span {
+      color: #5a9147;
+      font-weight: 800;
+      display: inline-block;
+      animation: sloganPop 1s ease-out 0.5s both;
+    }
+
+    @keyframes sloganFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-  .hero-slogan {
-  font-size: clamp(20px, 3vw, 30px);
-  font-weight: 600;
-  line-height: 2;
-  letter-spacing: 2px;
-  text-align: center;
-  color: #355b46;
-  animation: sloganFadeIn 1.5s ease-out both;
-}
 
-.hero-slogan span {
-  color: #5a9147;
-  font-weight: 800;
-  display: inline-block;
-  animation: sloganPop 1s ease-out 0.5s both;
-}
-
-@keyframes sloganFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes sloganPop {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
+    @keyframes sloganPop {
+      from {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
   </style>
 </head>
 
 <body>
 
- <div id="site-header"></div>
-<script src="header.js"></script>
+  <div id="site-header"></div>
+  <script src="header.js"></script>
 
   <div class="hero">
     <h1>一起探索台灣的山林</h1>
-   <p class="hero-slogan">
-  遠看是座山，近看山不小。<br>
-  我看遠山，<span>你在看山小。</span>
-</p>
+
+    <p class="hero-slogan">
+      遠看是座山，近看山不小。<br>
+      我看遠山，<span>你在看山小。</span>
+    </p>
   </div>
 
   <section id="about">
     <div class="container">
 
-      <h2>關於我們</h2>
+      <div class="homepage-layout">
 
-      <div class="about-layout">
+        <!-- 左側：關於我們 -->
 
-        <div class="slideshow" id="slideshow">
-          <img class="slide active" src="about01.jpg" alt="看山小登山紀錄 1">
-          <img class="slide" src="about02.jpg" alt="看山小登山紀錄 2">
-          <img class="slide" src="about03.jpg" alt="看山小登山紀錄 3">
-          <img class="slide" src="about04.jpg" alt="看山小登山紀錄 4">
-          <img class="slide" src="about05.jpg" alt="看山小登山紀錄 5">
-          <img class="slide" src="about06.jpg" alt="看山小登山紀錄 6">
-          <img class="slide" src="about07.jpg" alt="看山小登山紀錄 7">
-          <img class="slide" src="about08.jpg" alt="看山小登山紀錄 8">
-          <img class="slide" src="about09.jpg" alt="看山小登山紀錄 9">
-          <img class="slide" src="about10.jpg" alt="看山小登山紀錄 10">
+        <div class="about-content">
 
-          <div class="slide-counter" id="slideCounter">1 / 10</div>
+          <h2>關於我們</h2>
+
+          <div class="about-layout">
+
+            <div class="slideshow" id="slideshow">
+              <img class="slide active" src="about01.jpg" alt="看山小登山紀錄 1">
+              <img class="slide" src="about02.jpg" alt="看山小登山紀錄 2">
+              <img class="slide" src="about03.jpg" alt="看山小登山紀錄 3">
+              <img class="slide" src="about04.jpg" alt="看山小登山紀錄 4">
+              <img class="slide" src="about05.jpg" alt="看山小登山紀錄 5">
+              <img class="slide" src="about06.jpg" alt="看山小登山紀錄 6">
+              <img class="slide" src="about07.jpg" alt="看山小登山紀錄 7">
+              <img class="slide" src="about08.jpg" alt="看山小登山紀錄 8">
+              <img class="slide" src="about09.jpg" alt="看山小登山紀錄 9">
+              <img class="slide" src="about10.jpg" alt="看山小登山紀錄 10">
+
+              <div class="slide-counter" id="slideCounter">1 / 10</div>
+            </div>
+
+            <div class="about-text">
+
+              <h3>山，讓我們看見不一樣的世界</h3>
+
+              <p>
+                看山小是一群熱愛台灣山林的登山夥伴。
+                我們相信，登山不只是抵達山頂，
+                更是一段探索自然、認識自己與夥伴的旅程。
+              </p>
+
+              <p>
+                有人問，為什麼總是往山裡跑？
+                明明知道路途遙遠、登頂不容易，
+                卻仍然一次又一次背起背包，踏上山徑。
+              </p>
+
+              <p>
+                或許是因為山林裡沒有城市的喧囂，
+                只有腳步聲、風聲，以及與自己對話的時間。
+              </p>
+
+              <p>
+                我們在山裡遇見日出、雲海與滿天星斗，
+                也在陡峭的山徑中學會堅持，
+                在疲憊時感受到夥伴的陪伴。
+              </p>
+
+              <p class="quote">
+                我們不只是為了登頂而出發，
+                而是為了沿途的風景，以及一起走過的人。
+              </p>
+
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="about-text">
-          <h3>山，讓我們看見不一樣的世界</h3>
+        <!-- 右側：近期活動 -->
 
-          <p>
-            看山小是一群熱愛台灣山林的登山夥伴。
-            我們相信，登山不只是抵達山頂，
-            更是一段探索自然、認識自己與夥伴的旅程。
+        <aside class="activities-panel" id="recent-activities">
+
+          <h2>近期活動</h2>
+
+          <p class="activities-subtitle">
+            UPCOMING EVENTS
           </p>
 
-          <p>
-            有人問，為什麼總是往山裡跑？
-            明明知道路途遙遠、登頂不容易，
-            卻仍然一次又一次背起背包，踏上山徑。
-          </p>
+          <div class="activity-list" id="activityList">
 
-          <p>
-            或許是因為山林裡沒有城市的喧囂，
-            只有腳步聲、風聲，以及與自己對話的時間。
-          </p>
+            <p class="activity-empty">
+              近期活動籌備中，敬請期待。
+            </p>
 
-          <p>
-            我們在山裡遇見日出、雲海與滿天星斗，
-            也在陡峭的山徑中學會堅持，
-            在疲憊時感受到夥伴的陪伴。
-          </p>
+          </div>
 
-          <p class="quote">
-            我們不只是為了登頂而出發，
-            而是為了沿途的風景，以及一起走過的人。
-          </p>
-        </div>
+          <a
+            class="all-activities"
+            id="allActivitiesLink"
+            aria-disabled="true"
+          >
+            查看所有活動
+          </a>
+
+        </aside>
 
       </div>
+
     </div>
   </section>
-
-  
 
   <footer>
     © 2026 看山小登山團隊
