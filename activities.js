@@ -130,6 +130,7 @@
   /* 取得台灣當地日期 */
 
   function getTaiwanDate() {
+
     const parts = new Intl.DateTimeFormat("en-CA", {
       timeZone: "Asia/Taipei",
       year: "numeric",
@@ -146,19 +147,23 @@
     return values.year + "-" +
            values.month + "-" +
            values.day;
+
   }
 
   /* 所有活動依日期排序 */
 
   function getAllActivities() {
+
     return [...activities].sort((a, b) =>
       a.startDate.localeCompare(b.startDate)
     );
+
   }
 
   /* 篩選尚未結束的活動 */
 
   function getUpcomingActivities() {
+
     const today = getTaiwanDate();
 
     return getAllActivities().filter(activity => {
@@ -171,21 +176,24 @@
         activity.status !== "已取消";
 
     });
+
   }
 
-  /* 建立單筆活動清單 */
+  /* 建立單筆活動清單及自動連結 */
 
   function createActivityItem(activity) {
 
-    const item = document.createElement(
-      activity.url ? "a" : "div"
-    );
+    const item = document.createElement("a");
 
     item.className = "activity-item";
 
-    if (activity.url) {
-      item.href = activity.url;
-    }
+    item.href = "activity.html?id=" +
+      encodeURIComponent(activity.id);
+
+    item.style.textDecoration = "none";
+    item.style.color = "inherit";
+
+    /* 日期方塊 */
 
     const [year, month, day] =
       activity.startDate.split("-");
@@ -195,6 +203,7 @@
 
     const monthText = document.createElement("span");
     monthText.className = "activity-month";
+
     monthText.textContent =
       year + " / " + month + "月";
 
@@ -203,6 +212,8 @@
     dayText.textContent = day;
 
     date.append(monthText, dayText);
+
+    /* 活動資訊 */
 
     const info = document.createElement("div");
     info.className = "activity-info";
@@ -227,19 +238,18 @@
 
     item.append(date, info);
 
-    if (activity.url) {
+    /* 活動詳細頁面箭頭 */
 
-      const arrow = document.createElement("span");
+    const arrow = document.createElement("span");
 
-      arrow.className = "activity-arrow";
-      arrow.textContent = "›";
-      arrow.setAttribute("aria-hidden", "true");
+    arrow.className = "activity-arrow";
+    arrow.textContent = "›";
+    arrow.setAttribute("aria-hidden", "true");
 
-      item.appendChild(arrow);
-
-    }
+    item.appendChild(arrow);
 
     return item;
+
   }
 
   /* 首頁最多顯示五場活動 */
@@ -260,12 +270,14 @@
       const empty = document.createElement("p");
 
       empty.className = "activity-empty";
+
       empty.textContent =
         "近期活動籌備中，敬請期待。";
 
       list.appendChild(empty);
 
       return;
+
     }
 
     upcoming.forEach(activity => {
@@ -275,6 +287,7 @@
       );
 
     });
+
   }
 
   /* 提供其他頁面共用活動資料 */
