@@ -2,6 +2,60 @@
   const style = document.createElement("style");
 
   style.textContent = `
+    /* 全站小水鹿滑鼠游標 */
+
+    @media (hover: hover) and (pointer: fine) {
+
+      html,
+      body,
+      body * {
+        cursor: url("deer-cursor.png") 4 12, auto !important;
+      }
+
+      /* 可點擊區域恢復一般箭頭 */
+
+      a,
+      a *,
+      button,
+      button *,
+      summary,
+      summary *,
+      select,
+      select *,
+      label,
+      label *,
+      [role="button"],
+      [role="button"] *,
+      [onclick],
+      [onclick] *,
+      input[type="button"],
+      input[type="submit"],
+      input[type="reset"],
+      input[type="checkbox"],
+      input[type="radio"],
+      input[type="file"] {
+        cursor: default !important;
+      }
+
+      /* 表單文字輸入欄位 */
+
+      input:not([type]),
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="url"],
+      input[type="number"],
+      textarea,
+      [contenteditable="true"] {
+        cursor: text !important;
+      }
+
+    }
+
+    /* 共用首頁導覽系統 */
+
     #site-header {
       background: #294b3a;
       font-family: Arial, "Microsoft JhengHei", sans-serif;
