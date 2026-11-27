@@ -7,84 +7,84 @@
 
   const activities = [
 
-  {
-    id: "test-01",
-    name: "【測試】屏風山｜兩天一夜",
-    startDate: "2027-05-15",
-    endDate: "2027-05-16",
-    difficulty: "高級挑戰",
-    description: "山屋住宿",
-    status: "籌備中",
-    url: ""
-  },
+    {
+      id: "test-01",
+      name: "【測試】屏風山｜兩天一夜",
+      startDate: "2027-05-15",
+      endDate: "2027-05-16",
+      difficulty: "高級挑戰",
+      description: "山屋住宿",
+      status: "籌備中",
+      url: ""
+    },
 
-  {
-    id: "test-02",
-    name: "【測試】白姑大山｜兩天一夜",
-    startDate: "2027-04-24",
-    endDate: "2027-04-25",
-    difficulty: "高級挑戰",
-    description: "全自理行程",
-    status: "籌備中",
-    url: ""
-  },
+    {
+      id: "test-02",
+      name: "【測試】白姑大山｜兩天一夜",
+      startDate: "2027-04-24",
+      endDate: "2027-04-25",
+      difficulty: "高級挑戰",
+      description: "全自理行程",
+      status: "籌備中",
+      url: ""
+    },
 
-  {
-    id: "test-03",
-    name: "【測試】七星山",
-    startDate: "2027-01-10",
-    endDate: "2027-01-10",
-    difficulty: "新手入門",
-    description: "單日行程",
-    status: "報名中",
-    url: ""
-  },
+    {
+      id: "test-03",
+      name: "【測試】七星山",
+      startDate: "2027-01-10",
+      endDate: "2027-01-10",
+      difficulty: "新手入門",
+      description: "單日行程",
+      status: "報名中",
+      url: ""
+    },
 
-  {
-    id: "test-04",
-    name: "【測試】塔曼山",
-    startDate: "2027-02-20",
-    endDate: "2027-02-20",
-    difficulty: "中級訓練",
-    description: "單日行程",
-    status: "已額滿",
-    url: ""
-  },
+    {
+      id: "test-04",
+      name: "【測試】塔曼山",
+      startDate: "2027-02-20",
+      endDate: "2027-02-20",
+      difficulty: "中級訓練",
+      description: "單日行程",
+      status: "已額滿",
+      url: ""
+    },
 
-  {
-    id: "test-05",
-    name: "【測試】合歡群峰",
-    startDate: "2027-05-29",
-    endDate: "2027-05-29",
-    difficulty: "百岳入門",
-    description: "單日行程",
-    status: "籌備中",
-    url: ""
-  },
+    {
+      id: "test-05",
+      name: "【測試】合歡群峰",
+      startDate: "2027-05-29",
+      endDate: "2027-05-29",
+      difficulty: "百岳入門",
+      description: "單日行程",
+      status: "籌備中",
+      url: ""
+    },
 
-  {
-    id: "test-06",
-    name: "【測試】嘉明湖",
-    startDate: "2027-06-19",
-    endDate: "2027-06-21",
-    difficulty: "高級挑戰",
-    description: "三天兩夜",
-    status: "籌備中",
-    url: ""
-  },
+    {
+      id: "test-06",
+      name: "【測試】嘉明湖",
+      startDate: "2027-06-19",
+      endDate: "2027-06-21",
+      difficulty: "高級挑戰",
+      description: "三天兩夜",
+      status: "籌備中",
+      url: ""
+    },
 
-  {
-    id: "test-07",
-    name: "【測試】象山",
-    startDate: "2026-01-01",
-    endDate: "2026-01-01",
-    difficulty: "新手入門",
-    description: "過期活動測試",
-    status: "報名中",
-    url: ""
-  }
+    {
+      id: "test-07",
+      name: "【測試】象山",
+      startDate: "2026-01-01",
+      endDate: "2026-01-01",
+      difficulty: "新手入門",
+      description: "過期活動測試",
+      status: "報名中",
+      url: ""
+    }
 
-];
+  ];
 
   /* 取得台灣當地日期 */
 
@@ -102,7 +102,9 @@
       values[part.type] = part.value;
     });
 
-    return ${values.year}-${values.month}-${values.day};
+    return values.year + "-" +
+           values.month + "-" +
+           values.day;
   }
 
   /* 所有活動依日期排序 */
@@ -119,12 +121,14 @@
     const today = getTaiwanDate();
 
     return getAllActivities().filter(activity => {
+
       const endDate =
         activity.endDate || activity.startDate;
 
       return endDate >= today &&
         activity.status !== "已結束" &&
         activity.status !== "已取消";
+
     });
   }
 
@@ -150,7 +154,8 @@
 
     const monthText = document.createElement("span");
     monthText.className = "activity-month";
-    monthText.textContent = ${year} / ${month}月;
+    monthText.textContent =
+      year + " / " + month + "月";
 
     const dayText = document.createElement("span");
     dayText.className = "activity-day";
@@ -182,11 +187,15 @@
     item.append(date, info);
 
     if (activity.url) {
+
       const arrow = document.createElement("span");
+
       arrow.className = "activity-arrow";
       arrow.textContent = "›";
       arrow.setAttribute("aria-hidden", "true");
+
       item.appendChild(arrow);
+
     }
 
     return item;
@@ -208,6 +217,7 @@
     if (upcoming.length === 0) {
 
       const empty = document.createElement("p");
+
       empty.className = "activity-empty";
       empty.textContent =
         "近期活動籌備中，敬請期待。";
@@ -218,7 +228,11 @@
     }
 
     upcoming.forEach(activity => {
-      list.appendChild(createActivityItem(activity));
+
+      list.appendChild(
+        createActivityItem(activity)
+      );
+
     });
   }
 
@@ -233,12 +247,16 @@
   /* 網頁載入後自動執行 */
 
   if (document.readyState === "loading") {
+
     document.addEventListener(
       "DOMContentLoaded",
       renderHomepageActivities
     );
+
   } else {
+
     renderHomepageActivities();
+
   }
 
 })();
