@@ -22,40 +22,6 @@
       line-height: 1.8;
     }
 
-    header {
-      background: #294b3a;
-      color: white;
-      text-align: center;
-      padding: 38px 20px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-
-    header p {
-      margin-bottom: 0;
-      color: #dce8dc;
-    }
-
-    nav {
-      background: #416b52;
-      text-align: center;
-      padding: 14px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #d9e9bc;
-    }
-
     .hero {
       text-align: center;
       padding: 65px 20px;
@@ -217,261 +183,243 @@
       .detail-section {
         padding: 24px;
       }
-
-      nav a {
-        margin: 0 8px;
-      }
     }
- .card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     .sleep-image img {
-    object-position: center bottom;
-}
+      object-position: center bottom;
+    }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>看山小｜登山裝備</h1>
-    <p>走進山林，看見更遼闊的自己</p>
-  </header>
+<div id="site-header"></div>
+<script src="header.js"></script>
 
-  <nav>
-    <a href="index.html">返回首頁</a>
-    <a href="index.html#about">關於我們</a>
-    <a href="contact.html">聯絡我們</a>
-  </nav>
+<div class="hero">
+  <h2>登山裝備・三大系統</h2>
+  <p>
+    裝備不只是重量，
+    更是我們在山林裡的安全與舒適。
+  </p>
+</div>
 
-  <div class="hero">
-    <h2>登山裝備・三大系統</h2>
-    <p>
-      裝備不只是重量，
-      更是我們在山林裡的安全與舒適。
-    </p>
-  </div>
+<main class="container">
 
-  <main class="container">
+  <h2 class="section-title">探索三大裝備系統</h2>
 
-    <h2 class="section-title">探索三大裝備系統</h2>
+  <div class="system-grid">
 
-    <div class="system-grid">
-
-     <a class="system-card" href="#sleep">
-    <div class="card-image sleep-image">
+    <a class="system-card" href="#sleep">
+      <div class="card-image sleep-image">
         <img src="gear-sleep.jpg" alt="看山小登山睡眠系統">
-    </div>
-    <div class="card-content">
+      </div>
+      <div class="card-content">
         <h3>睡眠系統</h3>
         <p>帳篷・睡袋・睡墊</p>
         <p>讓每一個山林夜晚，都能安心休息。</p>
-    </div>
-</a>
-
-      <a class="system-card" href="#warm">
-        <div class="card-image warm-image">
-  <img src="gear-warm.jpg" alt="看山小登山保暖系統">
-</div>
-        <div class="card-content">
-          <h3>保暖系統</h3>
-          <p>排汗層・保暖層・防風雨層</p>
-          <p>面對多變的高山氣候，做好準備。</p>
-        </div>
-      </a>
-
-      <a class="system-card" href="#cook">
-        <div class="card-image cook-image">
-    <img src="gear-cook.jpg" alt="看山小登山炊煮系統">
-</div>
-        <div class="card-content">
-          <h3>炊煮系統</h3>
-          <p>爐具・鍋具・燃料</p>
-          <p>在山林裡，享受一頓溫暖的餐食。</p>
-        </div>
-      </a>
-
-    </div>
-
-    <section id="sleep" class="detail-section">
-      <h2>01｜睡眠系統</h2>
-
-      <p>
-        登山不只是行走，良好的睡眠品質，
-        也是維持體力與恢復的重要關鍵。
-        睡眠系統主要由帳篷、睡袋與睡墊組成。
-      </p>
-
-      <div class="equipment-grid">
-
-       <details class="equipment-item">
-   <summary>帳篷｜山林中的臨時住所</summary>
-    <p>
-        帳篷是登山睡眠系統的重要裝備，
-        能提供遮風避雨的空間，讓登山者在營地安心休息。
-    </p>
-    <p>
-        選購時應考慮重量、抗風能力、防水性能、
-        內部空間與搭設便利性。
-    </p>
-    <p>
-        高山露營尤其需要留意營地風勢，
-        並確實固定營釘與營繩。
-    </p>
-</details>
-
-
-
-
-
-       <details class="equipment-item">
-<summary>睡袋｜高山夜晚的保暖核心</summary>
-    <p>
-        睡袋的主要功能，是減少睡眠時的熱量散失，
-        幫助登山者在低溫環境中維持舒適的體溫。
-    </p>
-    <p>
-        選購時應優先參考舒適溫度（Comfort）、
-        填充材質、重量及收納體積，
-        而非只看最低極限溫度。
-    </p>
-    <p>
-        羽絨睡袋通常具有良好的重量與保暖效率，
-        但必須特別注意防潮，避免受潮後保暖能力下降。
-    </p>
-</details>
-
-
-     <details class="equipment-item">
-    <summary>睡墊｜隔絕地面寒氣的關鍵</summary>
-    <p>
-        睡墊不只是為了增加睡眠舒適度，
-        更重要的是隔絕地面傳導的熱量散失。
-        即使使用保暖睡袋，缺乏適當睡墊仍可能感到寒冷。
-    </p>
-    <p>
-        選購時應注意 R 值（熱阻值），
-        數值越高，代表睡墊的隔熱能力通常越好。
-        高山低溫環境應優先考慮足夠的隔熱性能。
-    </p>
-    <p>
-        常見類型包括泡棉睡墊與充氣睡墊。
-        泡棉睡墊耐用、不怕刺破；
-        充氣睡墊則通常具有較好的收納性與舒適度，
-        但需留意破損風險。
-    </p>
-</details>
-      
-
       </div>
+    </a>
 
-      <div class="note">
-        看山小提醒：睡袋與睡墊需要互相搭配，
-        單靠厚睡袋，不一定能抵擋地面的寒冷。
+    <a class="system-card" href="#warm">
+      <div class="card-image warm-image">
+        <img src="gear-warm.jpg" alt="看山小登山保暖系統">
       </div>
-    </section>
+      <div class="card-content">
+        <h3>保暖系統</h3>
+        <p>排汗層・保暖層・防風雨層</p>
+        <p>面對多變的高山氣候，做好準備。</p>
+      </div>
+    </a>
 
-    <section id="warm" class="detail-section">
-      <h2>02｜保暖系統</h2>
+    <a class="system-card" href="#cook">
+      <div class="card-image cook-image">
+        <img src="gear-cook.jpg" alt="看山小登山炊煮系統">
+      </div>
+      <div class="card-content">
+        <h3>炊煮系統</h3>
+        <p>爐具・鍋具・燃料</p>
+        <p>在山林裡，享受一頓溫暖的餐食。</p>
+      </div>
+    </a>
 
-      <p>
-        高山氣溫與天氣變化快速。
-        透過分層穿著，能依照行進、
-        休息及營地活動調整體感溫度。
-      </p>
+  </div>
 
-      <div class="equipment-grid">
+  <section id="sleep" class="detail-section">
+    <h2>01｜睡眠系統</h2>
 
-        <details class="equipment-item">
-         <summary>排汗層</summary>
-          <p>
-            幫助汗水離開皮膚表面，
-            減少衣物潮濕造成的不適與失溫風險。
-          </p>
-        </details>
+    <p>
+      登山不只是行走，良好的睡眠品質，
+      也是維持體力與恢復的重要關鍵。
+      睡眠系統主要由帳篷、睡袋與睡墊組成。
+    </p>
 
-       <details class="equipment-item">
-          <summary>保暖層</summary>
-          <p>
-            例如刷毛衣、化纖保暖衣或羽絨衣。
-            依照活動量與環境溫度選擇。
-          </p>
-        </details>
+    <div class="equipment-grid">
 
-        <details class="equipment-item">
-          <summary>防風雨層</summary>
-          <p>
-            阻擋風雨對身體造成的影響。
-            選擇時應注意防水性、
-            防風能力與透氣設計。
-          </p>
+      <details class="equipment-item">
+        <summary>帳篷｜山林中的臨時住所</summary>
+        <p>
+          帳篷是登山睡眠系統的重要裝備，
+          能提供遮風避雨的空間，讓登山者在營地安心休息。
+        </p>
+        <p>
+          選購時應考慮重量、抗風能力、防水性能、
+          內部空間與搭設便利性。
+        </p>
+        <p>
+          高山露營尤其需要留意營地風勢，
+          並確實固定營釘與營繩。
+        </p>
       </details>
 
-      </div>
+      <details class="equipment-item">
+        <summary>睡袋｜高山夜晚的保暖核心</summary>
+        <p>
+          睡袋的主要功能，是減少睡眠時的熱量散失，
+          幫助登山者在低溫環境中維持舒適的體溫。
+        </p>
+        <p>
+          選購時應優先參考舒適溫度（Comfort）、
+          填充材質、重量及收納體積，
+          而非只看最低極限溫度。
+        </p>
+        <p>
+          羽絨睡袋通常具有良好的重量與保暖效率，
+          但必須特別注意防潮，避免受潮後保暖能力下降。
+        </p>
+      </details>
 
-      <div class="note">
-        看山小提醒：行進時避免穿得過熱，
-        停下休息時則應及時增加保暖衣物。
-      </div>
-    </section>
+      <details class="equipment-item">
+        <summary>睡墊｜隔絕地面寒氣的關鍵</summary>
+        <p>
+          睡墊不只是為了增加睡眠舒適度，
+          更重要的是隔絕地面傳導的熱量散失。
+          即使使用保暖睡袋，缺乏適當睡墊仍可能感到寒冷。
+        </p>
+        <p>
+          選購時應注意 R 值（熱阻值），
+          數值越高，代表睡墊的隔熱能力通常越好。
+          高山低溫環境應優先考慮足夠的隔熱性能。
+        </p>
+        <p>
+          常見類型包括泡棉睡墊與充氣睡墊。
+          泡棉睡墊耐用、不怕刺破；
+          充氣睡墊則通常具有較好的收納性與舒適度，
+          但需留意破損風險。
+        </p>
+      </details>
 
-    <section id="cook" class="detail-section">
-      <h2>03｜炊煮系統</h2>
+    </div>
 
-      <p>
-        在山林中享用熱食，
-        不僅能補充能量，
-        也是登山生活中令人期待的時刻。
-        炊煮系統需要兼顧重量、效率與安全。
-      </p>
+    <div class="note">
+      看山小提醒：睡袋與睡墊需要互相搭配，
+      單靠厚睡袋，不一定能抵擋地面的寒冷。
+    </div>
+  </section>
 
-      <div class="equipment-grid">
+  <section id="warm" class="detail-section">
+    <h2>02｜保暖系統</h2>
 
-       <details class="equipment-item">
-          <summary>爐具</summary>
-          <p>
-            依照使用環境、炊煮需求與
-            隊伍人數，選擇適合的登山爐具。
-          </p>
-       </details>
+    <p>
+      高山氣溫與天氣變化快速。
+      透過分層穿著，能依照行進、
+      休息及營地活動調整體感溫度。
+    </p>
 
-       <details class="equipment-item">
-          <summary>鍋具</summary>
-          <p>
-            考慮容量、重量、
-            導熱效率及收納便利性，
-            避免攜帶不必要的裝備。
-          </p>
-         </details>
+    <div class="equipment-grid">
 
-        <details class="equipment-item">
-          <summary>燃料</summary>
-          <p>
-            依照天數、人數、
-            氣溫與預計煮水量估算燃料，
-            並預留適當備用量。
-          </p>
-        </details>
+      <details class="equipment-item">
+        <summary>排汗層</summary>
+        <p>
+          幫助汗水離開皮膚表面，
+          減少衣物潮濕造成的不適與失溫風險。
+        </p>
+      </details>
 
-      </div>
+      <details class="equipment-item">
+        <summary>保暖層</summary>
+        <p>
+          例如刷毛衣、化纖保暖衣或羽絨衣。
+          依照活動量與環境溫度選擇。
+        </p>
+      </details>
 
-      <div class="note">
-        看山小提醒：避免在密閉帳篷內使用燃燒式爐具，
-        以降低一氧化碳中毒與火災風險。
-      </div>
-    </section>
+      <details class="equipment-item">
+        <summary>防風雨層</summary>
+        <p>
+          阻擋風雨對身體造成的影響。
+          選擇時應注意防水性、
+          防風能力與透氣設計。
+        </p>
+      </details>
 
-  </main>
+    </div>
 
-  <footer>
-    <p>© 2026 看山小登山團隊</p>
-    <p>走進山林，看見更遼闊的自己</p>
-  </footer>
+    <div class="note">
+      看山小提醒：行進時避免穿得過熱，
+      停下休息時則應及時增加保暖衣物。
+    </div>
+  </section>
+
+  <section id="cook" class="detail-section">
+    <h2>03｜炊煮系統</h2>
+
+    <p>
+      在山林中享用熱食，
+      不僅能補充能量，
+      也是登山生活中令人期待的時刻。
+      炊煮系統需要兼顧重量、效率與安全。
+    </p>
+
+    <div class="equipment-grid">
+
+      <details class="equipment-item">
+        <summary>爐具</summary>
+        <p>
+          依照使用環境、炊煮需求與
+          隊伍人數，選擇適合的登山爐具。
+        </p>
+      </details>
+
+      <details class="equipment-item">
+        <summary>鍋具</summary>
+        <p>
+          考慮容量、重量、
+          導熱效率及收納便利性，
+          避免攜帶不必要的裝備。
+        </p>
+      </details>
+
+      <details class="equipment-item">
+        <summary>燃料</summary>
+        <p>
+          依照天數、人數、
+          氣溫與預計煮水量估算燃料，
+          並預留適當備用量。
+        </p>
+      </details>
+
+    </div>
+
+    <div class="note">
+      看山小提醒：避免在密閉帳篷內使用燃燒式爐具，
+      以降低一氧化碳中毒與火災風險。
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 看山小登山團隊</p>
+  <p>走進山林，看見更遼闊的自己</p>
+</footer>
 
 </body>
 </html>
-撰寫
-撰寫
