@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登山活動總覽｜看山小</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #f4f6f2;
+      color: #294b3a;
+      line-height: 1.8;
+    }
+
+    /* 頁面標題 */
+
+    .hero {
+      background: #e9efe7;
+      text-align: center;
+      padding: 75px 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      margin: 0;
+    }
+
+    .hero .subtitle {
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: #416b52;
+      margin: 8px 0 20px;
+    }
+
+    .hero p {
+      color: #526458;
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+
+    /* 主要內容 */
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 20px 75px;
+    }
+
+    /* 活動分類切換 */
+
+    .activity-tabs {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .tab-button {
+      flex: 1;
+      border: 1px solid #72947b;
+      background: #e9efe7;
+      color: #294b3a;
+      border-radius: 10px;
+      padding: 14px 10px;
+      font-family: inherit;
+      font-size: 17px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .tab-button:hover {
+      background: #dce8dc;
+    }
+
+    .tab-button.active {
+      background: #294b3a;
+      color: white;
+      border-color: #294b3a;
+    }
+
+    /* 年份分類 */
+
+    .year-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin: 30px 0 15px;
+    }
+
+    .year-heading h2 {
+      font-size: 25px;
+      margin: 0;
+    }
+
+    .year-count {
+      font-size: 14px;
+      color: #526458;
+    }
+
+    /* 活動清單 */
+
+    .activity-list {
+      background: white;
+      border-radius: 15px;
+      padding: 10px 25px;
+      box-shadow: 0 6px 22px #0000000d;
+    }
+
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 25px 5px;
+      border-bottom: 1px solid #e2e9e0;
+      text-decoration: none;
+      color: #294b3a;
+    }
+
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+
+    .activity-item[href]:hover {
+      background: #f4f6f2;
+    }
+
+    /* 日期方塊 */
+
+    .activity-date {
+      flex-shrink: 0;
+      width: 85px;
+      padding: 13px 5px;
+      background: #e9efe7;
+      border-radius: 10px;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .activity-month {
+      display: block;
+      font-size: 13px;
+      color: #416b52;
+    }
+
+    .activity-day {
+      display: block;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    /* 活動資訊 */
+
+    .activity-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .activity-name {
+      font-size: 21px;
+      font-weight: bold;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .activity-full-date {
+      font-size: 14px;
+      color: #526458;
+      margin: 3px 0;
+    }
+
+    .activity-description {
+      font-size: 15px;
+      color: #526458;
+      margin: 4px 0;
+    }
+
+    .activity-status {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: bold;
+      color: #526458;
+      margin-top: 4px;
+    }
+
+    .status-open {
+      color: #327044;
+    }
+
+    .status-full {
+      color: #a46a37;
+    }
+
+    .status-preparing {
+      color: #627568;
+    }
+
+    .status-ended {
+      color: #777777;
+    }
+
+    .status-cancelled {
+      color: #985454;
+    }
+
+    .activity-arrow {
+      font-size: 28px;
+      color: #72947b;
+    }
+
+    /* 無活動時顯示 */
+
+    .activity-empty {
+      background: white;
+      border-radius: 15px;
+      text-align: center;
+      color: #526458;
+      padding: 45px 20px;
+      margin: 0;
+    }
+
+    /* 返回首頁 */
+
+    .back-home {
+      display: block;
+      width: fit-content;
+      margin: 40px auto 0;
+      padding: 12px 30px;
+      background: #294b3a;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .back-home:hover {
+      background: #416b52;
+    }
+
+    /* 頁尾 */
+
+    footer {
+      background: #294b3a;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    /* 手機響應式排版 */
+
+    @media (max-width: 768px) {
+
+      .hero {
+        padding: 55px 20px;
+      }
+
+      main {
+        padding: 35px 15px 55px;
+      }
+
+      .activity-tabs {
+        gap: 10px;
+        margin-bottom: 25px;
+      }
+
+      .tab-button {
+        font-size: 15px;
+        padding: 12px 8px;
+      }
+
+      .year-heading h2 {
+        font-size: 22px;
+      }
+
+      .activity-list {
+        padding: 5px 15px;
+      }
+
+      .activity-item {
+        gap: 13px;
+        padding: 20px 0;
+      }
+
+      .activity-date {
+        width: 65px;
+        padding: 10px 3px;
+      }
+
+      .activity-month {
+        font-size: 11px;
+      }
+
+      .activity-day {
+        font-size: 26px;
+      }
+
+      .activity-name {
+        font-size: 17px;
+      }
+
+      .activity-full-date {
+        font-size: 12px;
+      }
+
+      .activity-description {
+        font-size: 13px;
+      }
+
+      .activity-status {
+        font-size: 12px;
+      }
+
+      .activity-arrow {
+        font-size: 22px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- 全站共用導覽列及小水鹿游標 -->
+
+  <div id="site-header"></div>
+  <script src="header.js"></script>
+
+  <!-- 頁面標題 -->
+
+  <div class="hero">
+
+    <h1>登山活動總覽</h1>
+
+    <p class="subtitle">
+      HIKING EVENTS
+    </p>
+
+    <p>
+      每一次出發，都是一段新的山林旅程。
+    </p>
+
+  </div>
+
+  <main>
+
+    <!-- 活動分類按鈕 -->
+
+    <div class="activity-tabs"
+         role="group"
+         aria-label="活動分類">
+
+      <button
+        type="button"
+        class="tab-button active"
+        id="upcomingButton"
+        aria-pressed="true">
+        近期活動
+      </button>
+
+      <button
+        type="button"
+        class="tab-button"
+        id="historyButton"
+        aria-pressed="false">
+        歷史活動
+      </button>
+
+    </div>
+
+    <!-- 活動資料顯示區域 -->
+
+    <div id="allActivitiesList"
+         aria-live="polite">
+
+      <p class="activity-empty">
+        活動資料載入中……
+      </p>
+
+    </div>
+
+    <a href="index.html" class="back-home">
+      返回首頁
+    </a>
+
+  </main>
+
+  <footer>
+
+    © 2026 看山小登山團隊
+
+    <p>走進山林，看見更遼闊的自己</p>
+
+  </footer>
+
+  <!-- 讀取共用活動資料 -->
+
+  <script src="activities.js"></script>
+
+  <script>
+
+    (() => {
+
+      const activitySystem =
+        window.KanShanXiaoActivities;
+
+      const container =
+        document.getElementById("allActivitiesList");
+
+      const upcomingButton =
+        document.getElementById("upcomingButton");
+
+      const historyButton =
+        document.getElementById("historyButton");
+
+      /* 活動資料載入失敗時的處理 */
+
+      if (!activitySystem) {
+
+        container.replaceChildren();
+
+        const message =
+          document.createElement("p");
+
+        message.className = "activity-empty";
+
+        message.textContent =
+          "活動資料暫時無法載入，請稍後重新整理。";
+
+        container.appendChild(message);
+
+        upcomingButton.disabled = true;
+        historyButton.disabled = true;
+
+        return;
+      }
+
+      /* 取得活動資料 */
+
+      const allActivities =
+        activitySystem.getAllActivities();
+
+      const upcomingActivities =
+        activitySystem.getUpcomingActivities();
+
+      const upcomingIds = new Set(
+        upcomingActivities.map(activity => activity.id)
+      );
+
+      const historyActivities =
+        allActivities.filter(activity =>
+          !upcomingIds.has(activity.id)
+        ).sort((a, b) =>
+          b.startDate.localeCompare(a.startDate)
+        );
+
+      /* 顯示活動數量 */
+
+      upcomingButton.textContent =
+        "近期活動（" + upcomingActivities.length + "）";
+
+      historyButton.textContent =
+        "歷史活動（" + historyActivities.length + "）";
+
+      /* 日期格式轉換 */
+
+      function formatDate(date) {
+
+        return date.replace(/-/g, "/");
+
+      }
+
+      /* 顯示完整活動日期 */
+
+      function getFullDate(activity) {
+
+        const start = activity.startDate;
+
+        const end =
+          activity.endDate || start;
+
+        if (start === end) {
+          return formatDate(start);
+        }
+
+        return formatDate(start) +
+          "－" + formatDate(end);
+
+      }
+
+      /* 活動狀態配色 */
+
+      function getStatusClass(status) {
+
+        switch (status) {
+
+          case "報名中":
+            return "status-open";
+
+          case "已額滿":
+          case "額滿":
+            return "status-full";
+
+          case "已結束":
+            return "status-ended";
+
+          case "已取消":
+            return "status-cancelled";
+
+          default:
+            return "status-preparing";
+
+        }
+
+      }
+
+      /* 建立活動清單 */
+
+      function buildActivityItem(activity, isHistory) {
+
+        const item =
+          activitySystem.createActivityItem(activity);
+
+        const info =
+          item.querySelector(".activity-info");
+
+        const name =
+          item.querySelector(".activity-name");
+
+        const status =
+          item.querySelector(".activity-status");
+
+        const fullDate =
+          document.createElement("p");
+
+        fullDate.className = "activity-full-date";
+
+        fullDate.textContent =
+          getFullDate(activity);
+
+        name.after(fullDate);
+
+        let displayStatus = activity.status;
+
+        if (isHistory &&
+            displayStatus !== "已取消") {
+
+          displayStatus = "已結束";
+
+        }
+
+        status.textContent = displayStatus;
+
+        status.classList.add(
+          getStatusClass(displayStatus)
+        );
+
+        return item;
+
+      }
+
+      /* 依年份分組 */
+
+      function groupByYear(activities) {
+
+        const groups = new Map();
+
+        activities.forEach(activity => {
+
+          const year =
+            activity.startDate.slice(0, 4);
+
+          if (!groups.has(year)) {
+
+            groups.set(year, []);
+
+          }
+
+          groups.get(year).push(activity);
+
+        });
+
+        return groups;
+
+      }
+
+      /* 顯示活動 */
+
+      function renderActivities(type) {
+
+        const isHistory = type === "history";
+
+        const activities = isHistory
+          ? historyActivities
+          : upcomingActivities;
+
+        upcomingButton.classList.toggle(
+          "active", !isHistory
+        );
+
+        historyButton.classList.toggle(
+          "active", isHistory
+        );
+
+        upcomingButton.setAttribute(
+          "aria-pressed", String(!isHistory)
+        );
+
+        historyButton.setAttribute(
+          "aria-pressed", String(isHistory)
+        );
+
+        container.replaceChildren();
+
+        /* 無活動時的提示 */
+
+        if (activities.length === 0) {
+
+          const empty =
+            document.createElement("p");
+
+          empty.className = "activity-empty";
+
+          empty.textContent = isHistory
+            ? "目前尚無歷史活動紀錄。"
+            : "近期活動籌備中，敬請期待。";
+
+          container.appendChild(empty);
+
+          return;
+
+        }
+
+        const groups =
+          groupByYear(activities);
+
+        /* 建立各年份活動區塊 */
+
+        groups.forEach((yearActivities, year) => {
+
+          const heading =
+            document.createElement("div");
+
+          heading.className = "year-heading";
+
+          const title =
+            document.createElement("h2");
+
+          title.textContent =
+            year + " 年登山活動";
+
+          const count =
+            document.createElement("span");
+
+          count.className = "year-count";
+
+          count.textContent =
+            "共 " + yearActivities.length + " 場活動";
+
+          heading.append(title, count);
+
+          const list =
+            document.createElement("div");
+
+          list.className = "activity-list";
+
+          yearActivities.forEach(activity => {
+
+            list.appendChild(
+              buildActivityItem(activity, isHistory)
+            );
+
+          });
+
+          container.append(heading, list);
+
+        });
+
+      }
+
+      /* 切換近期活動 */
+
+      upcomingButton.addEventListener(
+        "click",
+        () => renderActivities("upcoming")
+      );
+
+      /* 切換歷史活動 */
+
+      historyButton.addEventListener(
+        "click",
+        () => renderActivities("history")
+      );
+
+      /* 預設顯示近期活動 */
+
+      renderActivities("upcoming");
+
+    })();
+
+  </script>
+
+</body>
+</html>
